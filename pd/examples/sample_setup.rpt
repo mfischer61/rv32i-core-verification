@@ -1,0 +1,31 @@
+# Trimmed sample in Innovus report_timing format (example values for testing the parser)
+Path 1: VIOLATED Setup Check with Pin cpu/u_reg_file/registers_reg_21__1_/CK 
+Endpoint:   cpu/u_reg_file/registers_reg_21__1_/D (^) checked with  leading edge of 'coreClk'
+Beginpoint: rst_i                                 (v) triggered by  leading edge of '@'
+Path Groups: {default}
+Other End Arrival Time          0.012
+- Setup                         0.064
++ Phase Shift                   2.500
+= Required Time                 2.448
+- Arrival Time                  3.007
+= Slack Time                   -0.559
+
+Path 2: VIOLATED Setup Check with Pin cpu/u_reg_file/registers_reg_21__7_/CK 
+Endpoint:   cpu/u_reg_file/registers_reg_21__7_/D (^) checked with  leading edge of 'coreClk'
+Beginpoint: rst_i                                 (v) triggered by  leading edge of '@'
+= Slack Time                   -0.551
+
+Path 3: VIOLATED Setup Check with Pin cpu/u_reg_file/registers_reg_31__30_/CK 
+Endpoint:   cpu/u_reg_file/registers_reg_31__30_/D (^) checked with  leading edge of 'coreClk'
+Beginpoint: cpu/instr_q_reg_16_/Q                 (^) triggered by  leading edge of 'coreClk'
+= Slack Time                   -0.344
+
+Path 4: VIOLATED Clock Gating Setup Check with Pin cpu/u_reg_file/clk_gate_registers_reg_21_/latch/CK 
+Endpoint:   cpu/u_reg_file/clk_gate_registers_reg_21_/latch/E (^) checked with trailing edge of 'coreClk'
+Beginpoint: cpu/instr_q_reg_0_/Q                  (^) triggered by  leading edge of 'coreClk'
+= Slack Time                   -0.838
+
+Path 5: MET Setup Check with Pin cpu/u_reg_file/registers_reg_28__20_/CK 
+Endpoint:   cpu/u_reg_file/registers_reg_28__20_/D (^) checked with  leading edge of 'coreClk'
+Beginpoint: cpu/instr_q_reg_18_/Q                 (^) triggered by  leading edge of 'coreClk'
+= Slack Time                    0.000

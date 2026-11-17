@@ -1,0 +1,12 @@
+# Trimmed sample in Synopsys/OpenSTA format (example values for testing the parser)
+Startpoint: cpu/pc_q_reg_2_ (rising edge-triggered flip-flop clocked by coreClk)
+Endpoint: cpu/u_fetch/pc_o_reg_2_ (rising edge-triggered flip-flop clocked by coreClk)
+Path Group: coreClk
+Path Type: min
+  slack (MET)                                           0.041
+
+Startpoint: cpu/state_q_reg_1_ (rising edge-triggered flip-flop clocked by coreClk)
+Endpoint: cpu/state_q_reg_0_ (rising edge-triggered flip-flop clocked by coreClk)
+Path Group: coreClk
+Path Type: min
+  slack (VIOLATED)                                     -0.012

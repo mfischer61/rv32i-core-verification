@@ -13,6 +13,8 @@ Built during Silicon Jackets (Georgia Tech's student chip-design team) onboardin
 | Constrained random | Random program generator with instruction and external-port constraints |
 | Assertions | 7 SVA properties; each proven to fire with a forced violation (logs in `docs/evidence/`) |
 | Coverage | **100%** overall code coverage (2040/2040) on the DUT, Xcelium + IMC |
+| pyuvm testbench | Extra, beyond onboarding: UVM in Python (pyuvm on cocotb) with a Python golden model and scoreboard; 44/44 directed + random programs pass (`tb/pyuvm/`) |
+| Timing script | `pd/slack_rank.py` ranks the 10 worst setup and hold paths from a timing report and shows where violations cluster |
 | Bugs found | Assertion 3.3 caught a sticky `halted` bug in my own core; 3.4 caught a driver race. Bug hunt found 3 bugs in an encrypted pipelined CPU (below). |
 
 ## Bug hunt results (encrypted pipelined CPU)
@@ -30,6 +32,8 @@ rtl/    alu.sv, decode.sv, cpu_top.sv     my RTL (fetch, register file, SRAM wra
 tb/     cpu_tb_top.sv, driver, monitor,   club scaffold + my sequences, assertions, CRV,
         scoreboard, seq/xbar items        coverage and monitor fixes
         exclusions.vRefine                coverage exclusions with justification
+tb/pyuvm/                                 pyuvm testbench + Python golden model (my extra work)
+pd/     slack_rank.py                     timing-report parser that ranks worst setup/hold paths
 docs/   testplan_initial.md               plan reviewed before implementation
         testplan_final.md                 final plan, coverage closure, bug-hunt reports
         evidence/                         forced-violation logs, one per assertion
@@ -38,4 +42,4 @@ docs/   testplan_initial.md               plan reviewed before implementation
 
 ## Tools
 
-SystemVerilog, Cadence Xcelium (`xrun`), IMC coverage, SimVision.
+SystemVerilog, Cadence Xcelium (`xrun`), IMC coverage, SimVision. Python, pyuvm, cocotb.

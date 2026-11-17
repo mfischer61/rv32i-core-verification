@@ -1,2 +1,6 @@
 *.history
 .DS_Store
+sim_build/
+results.xml
+__pycache__/
+*.pyc
