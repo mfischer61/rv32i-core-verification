@@ -1,0 +1,2291 @@
+xrun(64): 25.03-s003: (c) Copyright 1995-2025 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	25.03-s003: Started on Oct 01, 2026 at 23:56:56 EDT
+xrun
+	-64bit
+	-sv
+	-linedebug
+	-access +rwc
+	-timescale 1ns/10ps
+	+define+SIM=1
+	+incdir+sym_links
+	-coverage all
+	-licqueue
+	-covoverwrite
+	-svseed 1
+	-f sym_links/sim_no_path.include
+		sym_links/CF_SRAM_1024x32.tt_180V_25C.v
+		sym_links/sram_wrapper.sv
+		sym_links/memory_controller.sv
+		sym_links/chip_top.sv
+		sym_links/cpu_pkg.sv
+		sym_links/alu.sv
+		sym_links/decode.sv
+		sym_links/reg_file.sv
+		sym_links/fetch.sv
+		sym_links/cpu_top.sv
+		sym_links/cpu_if.sv
+		sym_links/cpu_tb_pkg.sv
+		sym_links/cpu_tb_top.sv
+	-top cpu_tb_top
+	-covtest member
+	-logfile simulation.log
+	+SEED_LABEL=1
+	+VIOLATE_3_5
+
+   User defined plus("+") options:
+	+SEED_LABEL=1
+	+VIOLATE_3_5
+
+xrun: *W,BADPRF: The -linedebug option may have an adverse performance impact.
+Recompiling... reason: file './sym_links/cpu_tb_top.sv' is newer than expected.
+	expected: Thu Oct  1 20:52:43 2026
+	actual:   Thu Oct  1 23:56:49 2026
+file: sym_links/cpu_tb_top.sv
+	module worklib.cpu_tb_top:sv
+		errors: 0, warnings: 0
+	Elaborating the design hierarchy:
+		Caching library 'worklib' ....... Done
+	Top level design units:
+		cpu_tb_pkg
+		cpu_pkg
+		cpu_tb_top
+
+	Extracting FSMs for coverage:
+		worklib.fetch
+		worklib.decode
+		worklib.alu
+		worklib.reg_file
+		worklib.cpu_top
+			FSM extracted for state register state_q
+xmelab: *W,COVDNC: Coverage inside Verilog library cells and VHDL vital cells is not enabled by default; if needed, use the set_libcell_scoring command at elaboration.
+		worklib.sram_wrapper
+		worklib.memory_controller
+		worklib.chip_top
+		worklib.cpu_tb_top
+	Total FSMs extracted = 1
+xmelab: *W,COVEOI: Currently, by default, expression coverage is not scored for an expression containing supported operators if that expression contains an inside operator. Such an expression can be scored using the "set_expr_scoring -inside" coverage configuration file command. In future releases, the scoring of expressions containing inside operators will be enabled by default. This change may prevent merge of and refinements from older coverage databases.
+                            fail($sformatf("final dmem[0x%03x] = 0x%08x",
+                                                                       |
+xmelab: *W,EXFARG (./sym_links/cpu_sb.svh,229|71): Extra Argument with given format specifier.
+	Building instance overlay tables: ..........
+xmelab: *W,COVFDP: FSM description matching across instance of a module for "COVFDM" warning has been moved from elaboration to simulation dumping. To restore old matching behavior, use "set_backward_compat -COVFDM_during_elab". Also, it is recommended to use set_parameterized_module_coverage CCF command to avoid coverage loss due to FSM description difference across instances of a module.
+xmelab: *W,COVFHT: FSM hold transitions (transitions to the current state) are not extracted for any FSM in default mode.
+.......... Done
+	Enabling instrumentation for coverage types: block expression FSM toggle functional
+xmelab: *W,COVDCL: By default expression coverage is scored only for Verilog logical operators (|| and &&) and VHDL logical operators (OR, AND, NOR, and NAND), and is scored only in condition expressions. To score coverage for other operators and for expressions in other statements, use the "set_expr_coverable_operators" and "set_expr_coverable_statements" coverage configuration file commands with suitable options at elaboration.
+	Generating native compiled code:
+		worklib.cpu_tb_top:sv <0x0c671850>
+			streams:  79, words: 253317
+		worklib.cpu_tb_pkg:sv <0x0dd54303>
+			streams:  15, words: 48822
+		worklib.cpu_tb_pkg:sv <0x45994c17>
+			streams:  11, words: 25372
+		worklib.cpu_if:sv <0x2fb9d730>
+			streams:  42, words: 30161
+xmelab: *W,COVNOEN: By default, toggle coverage is not supported for systemverilog enumerated nets and variables. To enable toggle coverage of these objects, specify the 'set_toggle_scoring -sv_enum' command in the coverage configuration file.
+    output logic [31:0] reg_values_o [0:31] //Register Values Output
+                                   |
+xmelab: *W,COVMDD (./sym_links/reg_file.sv,17|35): Toggle coverage for bit, logic, reg, wire, enum and struct multi-dimensional static arrays and vectors is not supported by default. To enable toggle coverage for enum multi-dimensional static arrays specify 'set_toggle_scoring -sv_enum enable_mda' and for other multi-dimensional static arrays, specify 'set_toggle_scoring -sv_mda [<max_bit_base2_exponent>] [-sv_mda_of_struct]' ccf command in the coverage configuration file.
+    integer i; //used for generate loops in systemverilog
+            |
+xmelab: *W,COVUTA (./sym_links/reg_file.sv,21|12): Toggle coverage is not supported for SystemVerilog integer, real array, string, dynamic array, sparse memory and reference ports. It is also not supported for VHDL multi-dimensional array and array of record. There may also be other such objects in the design.
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                     Instances  Unique
+		Modules:                    14      11
+		Interfaces:                  1       1
+		Verilog packages:            2       2
+		Primitives:                  6       2
+		Registers:                 451     440
+		Scalar wires:              249       -
+		Vectored wires:            133       -
+		Named events:               16      12
+		Always blocks:              96      72
+		Initial blocks:             38      31
+		Clocking blocks:             1       1
+		Clocking items:             16      16
+		Parallel blocks:             1       1
+		Cont. assignments:         189     105
+		Pseudo assignments:        119       -
+		Assertions:                  8       8
+		SV Class declarations:       7       7
+		SV Class specializations:    7       7
+		Simulation timescale:      1ps
+	Writing initial simulation snapshot: worklib.cpu_tb_top:sv
+Loading snapshot worklib.cpu_tb_top:sv .................... Done
+SVSEED set from command line: 1
+xcelium> source /tools/software/cadence/xcelium/latest/tools/xcelium/files/xmsimrc
+xcelium> run
+xmsim: *W,SHMPOPT: Some objects excluded from $shm_probe due to optimizations.
+            File: ./sym_links/cpu_tb_top.sv, line = 739, pos = 17
+           Scope: cpu_tb_top
+            Time: 0 FS + 0
+
+         5 Mon: Reset asserted
+
+        65 TB: Initializing instruction and data memories
+
+     41025 TB: Memory initialization complete
+
+
+=================================================================
+ TEST: smoke_ebreak
+=================================================================
+     41035 Mon: Reset asserted
+
+     41105 Mon: External write Addr: 0x0000, Data: 0x00100073
+
+     41105 SB: External write imem[0x000] <- 0x00100073
+
+     41145 Mon: CPU started executing
+
+     41175 Mon: cpu_halted_o asserted
+
+     41205 SB: External read register x0, Expected 0x00000000, Matches Actual 0x00000000
+
+     41225 SB: External read register x1, Expected 0x00000000, Matches Actual 0x00000000
+
+     41245 SB: External read register x2, Expected 0x00000000, Matches Actual 0x00000000
+
+     41265 SB: External read register x3, Expected 0x00000000, Matches Actual 0x00000000
+
+     41285 SB: External read register x4, Expected 0x00000000, Matches Actual 0x00000000
+
+     41305 SB: External read register x5, Expected 0x00000000, Matches Actual 0x00000000
+
+     41325 SB: External read register x6, Expected 0x00000000, Matches Actual 0x00000000
+
+     41345 SB: External read register x7, Expected 0x00000000, Matches Actual 0x00000000
+
+     41365 SB: External read register x8, Expected 0x00000000, Matches Actual 0x00000000
+
+     41385 SB: External read register x9, Expected 0x00000000, Matches Actual 0x00000000
+
+     41405 SB: External read register x10, Expected 0x00000000, Matches Actual 0x00000000
+
+     41425 SB: External read register x11, Expected 0x00000000, Matches Actual 0x00000000
+
+     41445 SB: External read register x12, Expected 0x00000000, Matches Actual 0x00000000
+
+     41465 SB: External read register x13, Expected 0x00000000, Matches Actual 0x00000000
+
+     41485 SB: External read register x14, Expected 0x00000000, Matches Actual 0x00000000
+
+     41505 SB: External read register x15, Expected 0x00000000, Matches Actual 0x00000000
+
+     41525 SB: External read register x16, Expected 0x00000000, Matches Actual 0x00000000
+
+     41545 SB: External read register x17, Expected 0x00000000, Matches Actual 0x00000000
+
+     41565 SB: External read register x18, Expected 0x00000000, Matches Actual 0x00000000
+
+     41585 SB: External read register x19, Expected 0x00000000, Matches Actual 0x00000000
+
+     41605 SB: External read register x20, Expected 0x00000000, Matches Actual 0x00000000
+
+     41625 SB: External read register x21, Expected 0x00000000, Matches Actual 0x00000000
+
+     41645 SB: External read register x22, Expected 0x00000000, Matches Actual 0x00000000
+
+     41665 SB: External read register x23, Expected 0x00000000, Matches Actual 0x00000000
+
+     41685 SB: External read register x24, Expected 0x00000000, Matches Actual 0x00000000
+
+     41705 SB: External read register x25, Expected 0x00000000, Matches Actual 0x00000000
+
+     41725 SB: External read register x26, Expected 0x00000000, Matches Actual 0x00000000
+
+     41745 SB: External read register x27, Expected 0x00000000, Matches Actual 0x00000000
+
+     41765 SB: External read register x28, Expected 0x00000000, Matches Actual 0x00000000
+
+     41785 SB: External read register x29, Expected 0x00000000, Matches Actual 0x00000000
+
+     41805 SB: External read register x30, Expected 0x00000000, Matches Actual 0x00000000
+
+     41825 SB: External read register x31, Expected 0x00000000, Matches Actual 0x00000000
+
+     41875 SB: External read dmem[0x000], Expected 0xa2a8c90b, Matches Actual 0xa2a8c90b
+
+
+=================================================================
+ TEST: smoke_external_halt
+=================================================================
+     41905 Mon: Reset asserted
+
+     41975 Mon: External write Addr: 0x0000, Data: 0x00108093
+
+     41975 SB: External write imem[0x000] <- 0x00108093
+
+     41995 Mon: External write Addr: 0x0004, Data: 0x00108093
+
+     41995 SB: External write imem[0x001] <- 0x00108093
+
+     42015 Mon: External write Addr: 0x0008, Data: 0x00108093
+
+     42015 SB: External write imem[0x002] <- 0x00108093
+
+     42035 Mon: External write Addr: 0x000c, Data: 0x00108093
+
+     42035 SB: External write imem[0x003] <- 0x00108093
+
+     42055 Mon: External write Addr: 0x0010, Data: 0x00108093
+
+     42055 SB: External write imem[0x004] <- 0x00108093
+
+     42075 Mon: External write Addr: 0x0014, Data: 0x00108093
+
+     42075 SB: External write imem[0x005] <- 0x00108093
+
+     42095 Mon: External write Addr: 0x0018, Data: 0x00108093
+
+     42095 SB: External write imem[0x006] <- 0x00108093
+
+     42115 Mon: External write Addr: 0x001c, Data: 0x00108093
+
+     42115 SB: External write imem[0x007] <- 0x00108093
+
+     42135 Mon: External write Addr: 0x0020, Data: 0x00108093
+
+     42135 SB: External write imem[0x008] <- 0x00108093
+
+     42155 Mon: External write Addr: 0x0024, Data: 0x00108093
+
+     42155 SB: External write imem[0x009] <- 0x00108093
+
+     42175 Mon: External write Addr: 0x0028, Data: 0x00108093
+
+     42175 SB: External write imem[0x00a] <- 0x00108093
+
+     42195 Mon: External write Addr: 0x002c, Data: 0x00108093
+
+     42195 SB: External write imem[0x00b] <- 0x00108093
+
+     42215 Mon: External write Addr: 0x0030, Data: 0x00108093
+
+     42215 SB: External write imem[0x00c] <- 0x00108093
+
+     42235 Mon: External write Addr: 0x0034, Data: 0x00108093
+
+     42235 SB: External write imem[0x00d] <- 0x00108093
+
+     42255 Mon: External write Addr: 0x0038, Data: 0x00108093
+
+     42255 SB: External write imem[0x00e] <- 0x00108093
+
+     42275 Mon: External write Addr: 0x003c, Data: 0x00108093
+
+     42275 SB: External write imem[0x00f] <- 0x00108093
+
+     42295 Mon: External write Addr: 0x0040, Data: 0x00108093
+
+     42295 SB: External write imem[0x010] <- 0x00108093
+
+     42315 Mon: External write Addr: 0x0044, Data: 0x00108093
+
+     42315 SB: External write imem[0x011] <- 0x00108093
+
+     42335 Mon: External write Addr: 0x0048, Data: 0x00108093
+
+     42335 SB: External write imem[0x012] <- 0x00108093
+
+     42355 Mon: External write Addr: 0x004c, Data: 0x00108093
+
+     42355 SB: External write imem[0x013] <- 0x00108093
+
+     42375 Mon: External write Addr: 0x0050, Data: 0x00108093
+
+     42375 SB: External write imem[0x014] <- 0x00108093
+
+     42395 Mon: External write Addr: 0x0054, Data: 0x00108093
+
+     42395 SB: External write imem[0x015] <- 0x00108093
+
+     42415 Mon: External write Addr: 0x0058, Data: 0x00108093
+
+     42415 SB: External write imem[0x016] <- 0x00108093
+
+     42435 Mon: External write Addr: 0x005c, Data: 0x00108093
+
+     42435 SB: External write imem[0x017] <- 0x00108093
+
+     42455 Mon: External write Addr: 0x0060, Data: 0x00108093
+
+     42455 SB: External write imem[0x018] <- 0x00108093
+
+     42475 Mon: External write Addr: 0x0064, Data: 0x00108093
+
+     42475 SB: External write imem[0x019] <- 0x00108093
+
+     42495 Mon: External write Addr: 0x0068, Data: 0x00108093
+
+     42495 SB: External write imem[0x01a] <- 0x00108093
+
+     42515 Mon: External write Addr: 0x006c, Data: 0x00108093
+
+     42515 SB: External write imem[0x01b] <- 0x00108093
+
+     42535 Mon: External write Addr: 0x0070, Data: 0x00108093
+
+     42535 SB: External write imem[0x01c] <- 0x00108093
+
+     42555 Mon: External write Addr: 0x0074, Data: 0x00108093
+
+     42555 SB: External write imem[0x01d] <- 0x00108093
+
+     42575 Mon: External write Addr: 0x0078, Data: 0x00108093
+
+     42575 SB: External write imem[0x01e] <- 0x00108093
+
+     42595 Mon: External write Addr: 0x007c, Data: 0x00108093
+
+     42595 SB: External write imem[0x01f] <- 0x00108093
+
+     42615 Mon: External write Addr: 0x0080, Data: 0x00100073
+
+     42615 SB: External write imem[0x020] <- 0x00100073
+
+     42655 Mon: CPU started executing
+
+     42795 Mon: Reset asserted
+
+     42865 Mon: Reset asserted
+
+     42925 TB: Initializing instruction and data memories
+
+     83885 TB: Memory initialization complete
+
+
+=================================================================
+ TEST: addi_basic_signs
+=================================================================
+     83895 Mon: Reset asserted
+
+     83965 Mon: External write Addr: 0x0000, Data: 0x00500093
+
+     83965 SB: External write imem[0x000] <- 0x00500093
+
+     83985 Mon: External write Addr: 0x0004, Data: 0xffb00113
+
+     83985 SB: External write imem[0x001] <- 0xffb00113
+
+     84005 Mon: External write Addr: 0x0008, Data: 0x06408193
+
+     84005 SB: External write imem[0x002] <- 0x06408193
+
+     84025 Mon: External write Addr: 0x000c, Data: 0x00510213
+
+     84025 SB: External write imem[0x003] <- 0x00510213
+
+     84045 Mon: External write Addr: 0x0010, Data: 0x00100073
+
+     84045 SB: External write imem[0x004] <- 0x00100073
+
+     84085 Mon: CPU started executing
+
+     84235 Mon: cpu_halted_o asserted
+
+     84265 SB: External read register x0, Expected 0x00000000, Matches Actual 0x00000000
+
+     84285 SB: External read register x1, Expected 0x00000005, Matches Actual 0x00000005
+
+     84305 SB: External read register x2, Expected 0xfffffffb, Matches Actual 0xfffffffb
+
+     84325 SB: External read register x3, Expected 0x00000069, Matches Actual 0x00000069
+
+     84345 SB: External read register x4, Expected 0x00000000, Matches Actual 0x00000000
+
+     84365 SB: External read register x5, Expected 0x00000000, Matches Actual 0x00000000
+
+     84385 SB: External read register x6, Expected 0x00000000, Matches Actual 0x00000000
+
+     84405 SB: External read register x7, Expected 0x00000000, Matches Actual 0x00000000
+
+     84425 SB: External read register x8, Expected 0x00000000, Matches Actual 0x00000000
+
+     84445 SB: External read register x9, Expected 0x00000000, Matches Actual 0x00000000
+
+     84465 SB: External read register x10, Expected 0x00000000, Matches Actual 0x00000000
+
+     84485 SB: External read register x11, Expected 0x00000000, Matches Actual 0x00000000
+
+     84505 SB: External read register x12, Expected 0x00000000, Matches Actual 0x00000000
+
+     84525 SB: External read register x13, Expected 0x00000000, Matches Actual 0x00000000
+
+     84545 SB: External read register x14, Expected 0x00000000, Matches Actual 0x00000000
+
+     84565 SB: External read register x15, Expected 0x00000000, Matches Actual 0x00000000
+
+     84585 SB: External read register x16, Expected 0x00000000, Matches Actual 0x00000000
+
+     84605 SB: External read register x17, Expected 0x00000000, Matches Actual 0x00000000
+
+     84625 SB: External read register x18, Expected 0x00000000, Matches Actual 0x00000000
+
+     84645 SB: External read register x19, Expected 0x00000000, Matches Actual 0x00000000
+
+     84665 SB: External read register x20, Expected 0x00000000, Matches Actual 0x00000000
+
+     84685 SB: External read register x21, Expected 0x00000000, Matches Actual 0x00000000
+
+     84705 SB: External read register x22, Expected 0x00000000, Matches Actual 0x00000000
+
+     84725 SB: External read register x23, Expected 0x00000000, Matches Actual 0x00000000
+
+     84745 SB: External read register x24, Expected 0x00000000, Matches Actual 0x00000000
+
+     84765 SB: External read register x25, Expected 0x00000000, Matches Actual 0x00000000
+
+     84785 SB: External read register x26, Expected 0x00000000, Matches Actual 0x00000000
+
+     84805 SB: External read register x27, Expected 0x00000000, Matches Actual 0x00000000
+
+     84825 SB: External read register x28, Expected 0x00000000, Matches Actual 0x00000000
+
+     84845 SB: External read register x29, Expected 0x00000000, Matches Actual 0x00000000
+
+     84865 SB: External read register x30, Expected 0x00000000, Matches Actual 0x00000000
+
+     84885 SB: External read register x31, Expected 0x00000000, Matches Actual 0x00000000
+
+     84935 SB: External read dmem[0x000], Expected 0x3c00d3c7, Matches Actual 0x3c00d3c7
+
+     84965 SB: External read dmem[0x001], Expected 0x8d9a2664, Matches Actual 0x8d9a2664
+
+     84995 SB: External read dmem[0x002], Expected 0xb2a321db, Matches Actual 0xb2a321db
+
+     85025 SB: External read dmem[0x003], Expected 0x2983433d, Matches Actual 0x2983433d
+
+     85055 SB: External read dmem[0x004], Expected 0xf3d79464, Matches Actual 0xf3d79464
+
+     85085 SB: External read dmem[0x005], Expected 0x3c2fef84, Matches Actual 0x3c2fef84
+
+     85115 SB: External read dmem[0x006], Expected 0x6d881970, Matches Actual 0x6d881970
+
+     85145 SB: External read dmem[0x007], Expected 0x3889feae, Matches Actual 0x3889feae
+
+     85175 SB: External read dmem[0x008], Expected 0xc27f1f3b, Matches Actual 0xc27f1f3b
+
+     85205 SB: External read dmem[0x009], Expected 0xfa19f51d, Matches Actual 0xfa19f51d
+
+     85235 SB: External read dmem[0x00a], Expected 0xcde2e1ac, Matches Actual 0xcde2e1ac
+
+     85265 SB: External read dmem[0x00b], Expected 0xc081ed9e, Matches Actual 0xc081ed9e
+
+     85295 SB: External read dmem[0x00c], Expected 0x16b167d6, Matches Actual 0x16b167d6
+
+     85325 SB: External read dmem[0x00d], Expected 0x9b002eeb, Matches Actual 0x9b002eeb
+
+     85355 SB: External read dmem[0x00e], Expected 0xb3483179, Matches Actual 0xb3483179
+
+     85385 SB: External read dmem[0x00f], Expected 0x43f07129, Matches Actual 0x43f07129
+
+
+=================================================================
+ TEST: addi_imm_limits
+=================================================================
+     85415 Mon: Reset asserted
+
+     85485 Mon: External write Addr: 0x0000, Data: 0x7ff00093
+
+     85485 SB: External write imem[0x000] <- 0x7ff00093
+
+     85505 Mon: External write Addr: 0x0004, Data: 0x80000113
+
+     85505 SB: External write imem[0x001] <- 0x80000113
+
+     85525 Mon: External write Addr: 0x0008, Data: 0xfff00193
+
+     85525 SB: External write imem[0x002] <- 0xfff00193
+
+     85545 Mon: External write Addr: 0x000c, Data: 0x00118213
+
+     85545 SB: External write imem[0x003] <- 0x00118213
+
+     85565 Mon: External write Addr: 0x0010, Data: 0x00108293
+
+     85565 SB: External write imem[0x004] <- 0x00108293
+
+     85585 Mon: External write Addr: 0x0014, Data: 0x00100073
+
+     85585 SB: External write imem[0x005] <- 0x00100073
+
+     85625 Mon: CPU started executing
+
+     85805 Mon: cpu_halted_o asserted
+
+     85835 SB: External read register x0, Expected 0x00000000, Matches Actual 0x00000000
+
+     85855 SB: External read register x1, Expected 0x000007ff, Matches Actual 0x000007ff
+
+     85875 SB: External read register x2, Expected 0xfffff800, Matches Actual 0xfffff800
+
+     85895 SB: External read register x3, Expected 0xffffffff, Matches Actual 0xffffffff
+
+     85915 SB: External read register x4, Expected 0x00000000, Matches Actual 0x00000000
+
+     85935 SB: External read register x5, Expected 0x00000800, Matches Actual 0x00000800
+
+     85955 SB: External read register x6, Expected 0x00000000, Matches Actual 0x00000000
+
+     85975 SB: External read register x7, Expected 0x00000000, Matches Actual 0x00000000
+
+     85995 SB: External read register x8, Expected 0x00000000, Matches Actual 0x00000000
+
+     86015 SB: External read register x9, Expected 0x00000000, Matches Actual 0x00000000
+
+     86035 SB: External read register x10, Expected 0x00000000, Matches Actual 0x00000000
+
+     86055 SB: External read register x11, Expected 0x00000000, Matches Actual 0x00000000
+
+     86075 SB: External read register x12, Expected 0x00000000, Matches Actual 0x00000000
+
+     86095 SB: External read register x13, Expected 0x00000000, Matches Actual 0x00000000
+
+     86115 SB: External read register x14, Expected 0x00000000, Matches Actual 0x00000000
+
+     86135 SB: External read register x15, Expected 0x00000000, Matches Actual 0x00000000
+
+     86155 SB: External read register x16, Expected 0x00000000, Matches Actual 0x00000000
+
+     86175 SB: External read register x17, Expected 0x00000000, Matches Actual 0x00000000
+
+     86195 SB: External read register x18, Expected 0x00000000, Matches Actual 0x00000000
+
+     86215 SB: External read register x19, Expected 0x00000000, Matches Actual 0x00000000
+
+     86235 SB: External read register x20, Expected 0x00000000, Matches Actual 0x00000000
+
+     86255 SB: External read register x21, Expected 0x00000000, Matches Actual 0x00000000
+
+     86275 SB: External read register x22, Expected 0x00000000, Matches Actual 0x00000000
+
+     86295 SB: External read register x23, Expected 0x00000000, Matches Actual 0x00000000
+
+     86315 SB: External read register x24, Expected 0x00000000, Matches Actual 0x00000000
+
+     86335 SB: External read register x25, Expected 0x00000000, Matches Actual 0x00000000
+
+     86355 SB: External read register x26, Expected 0x00000000, Matches Actual 0x00000000
+
+     86375 SB: External read register x27, Expected 0x00000000, Matches Actual 0x00000000
+
+     86395 SB: External read register x28, Expected 0x00000000, Matches Actual 0x00000000
+
+     86415 SB: External read register x29, Expected 0x00000000, Matches Actual 0x00000000
+
+     86435 SB: External read register x30, Expected 0x00000000, Matches Actual 0x00000000
+
+     86455 SB: External read register x31, Expected 0x00000000, Matches Actual 0x00000000
+
+     86505 SB: External read dmem[0x000], Expected 0x3c00d3c7, Matches Actual 0x3c00d3c7
+
+     86535 SB: External read dmem[0x001], Expected 0x8d9a2664, Matches Actual 0x8d9a2664
+
+     86565 SB: External read dmem[0x002], Expected 0xb2a321db, Matches Actual 0xb2a321db
+
+     86595 SB: External read dmem[0x003], Expected 0x2983433d, Matches Actual 0x2983433d
+
+     86625 SB: External read dmem[0x004], Expected 0xf3d79464, Matches Actual 0xf3d79464
+
+     86655 SB: External read dmem[0x005], Expected 0x3c2fef84, Matches Actual 0x3c2fef84
+
+     86685 SB: External read dmem[0x006], Expected 0x6d881970, Matches Actual 0x6d881970
+
+     86715 SB: External read dmem[0x007], Expected 0x3889feae, Matches Actual 0x3889feae
+
+     86745 SB: External read dmem[0x008], Expected 0xc27f1f3b, Matches Actual 0xc27f1f3b
+
+     86775 SB: External read dmem[0x009], Expected 0xfa19f51d, Matches Actual 0xfa19f51d
+
+     86805 SB: External read dmem[0x00a], Expected 0xcde2e1ac, Matches Actual 0xcde2e1ac
+
+     86835 SB: External read dmem[0x00b], Expected 0xc081ed9e, Matches Actual 0xc081ed9e
+
+     86865 SB: External read dmem[0x00c], Expected 0x16b167d6, Matches Actual 0x16b167d6
+
+     86895 SB: External read dmem[0x00d], Expected 0x9b002eeb, Matches Actual 0x9b002eeb
+
+     86925 SB: External read dmem[0x00e], Expected 0xb3483179, Matches Actual 0xb3483179
+
+     86955 SB: External read dmem[0x00f], Expected 0x43f07129, Matches Actual 0x43f07129
+
+
+=================================================================
+ TEST: add_basic
+=================================================================
+     86985 Mon: Reset asserted
+
+     87055 Mon: External write Addr: 0x0000, Data: 0x00700093
+
+     87055 SB: External write imem[0x000] <- 0x00700093
+
+     87075 Mon: External write Addr: 0x0004, Data: 0xffd00113
+
+     87075 SB: External write imem[0x001] <- 0xffd00113
+
+     87095 Mon: External write Addr: 0x0008, Data: 0x002081b3
+
+     87095 SB: External write imem[0x002] <- 0x002081b3
+
+     87115 Mon: External write Addr: 0x000c, Data: 0x00210233
+
+     87115 SB: External write imem[0x003] <- 0x00210233
+
+     87135 Mon: External write Addr: 0x0010, Data: 0x000082b3
+
+     87135 SB: External write imem[0x004] <- 0x000082b3
+
+     87155 Mon: External write Addr: 0x0014, Data: 0x00000333
+
+     87155 SB: External write imem[0x005] <- 0x00000333
+
+     87175 Mon: External write Addr: 0x0018, Data: 0x00100073
+
+     87175 SB: External write imem[0x006] <- 0x00100073
+
+     87215 Mon: CPU started executing
+
+     87425 Mon: cpu_halted_o asserted
+
+     87455 SB: External read register x0, Expected 0x00000000, Matches Actual 0x00000000
+
+     87475 SB: External read register x1, Expected 0x00000007, Matches Actual 0x00000007
+
+     87495 SB: External read register x2, Expected 0xfffffffd, Matches Actual 0xfffffffd
+
+     87515 SB: External read register x3, Expected 0x00000004, Matches Actual 0x00000004
+
+     87535 SB: External read register x4, Expected 0xfffffffa, Matches Actual 0xfffffffa
+
+     87555 SB: External read register x5, Expected 0x00000007, Matches Actual 0x00000007
+
+     87575 SB: External read register x6, Expected 0x00000000, Matches Actual 0x00000000
+
+     87595 SB: External read register x7, Expected 0x00000000, Matches Actual 0x00000000
+
+     87615 SB: External read register x8, Expected 0x00000000, Matches Actual 0x00000000
+
+     87635 SB: External read register x9, Expected 0x00000000, Matches Actual 0x00000000
+
+     87655 SB: External read register x10, Expected 0x00000000, Matches Actual 0x00000000
+
+     87675 SB: External read register x11, Expected 0x00000000, Matches Actual 0x00000000
+
+     87695 SB: External read register x12, Expected 0x00000000, Matches Actual 0x00000000
+
+     87715 SB: External read register x13, Expected 0x00000000, Matches Actual 0x00000000
+
+     87735 SB: External read register x14, Expected 0x00000000, Matches Actual 0x00000000
+
+     87755 SB: External read register x15, Expected 0x00000000, Matches Actual 0x00000000
+
+     87775 SB: External read register x16, Expected 0x00000000, Matches Actual 0x00000000
+
+     87795 SB: External read register x17, Expected 0x00000000, Matches Actual 0x00000000
+
+     87815 SB: External read register x18, Expected 0x00000000, Matches Actual 0x00000000
+
+     87835 SB: External read register x19, Expected 0x00000000, Matches Actual 0x00000000
+
+     87855 SB: External read register x20, Expected 0x00000000, Matches Actual 0x00000000
+
+     87875 SB: External read register x21, Expected 0x00000000, Matches Actual 0x00000000
+
+     87895 SB: External read register x22, Expected 0x00000000, Matches Actual 0x00000000
+
+     87915 SB: External read register x23, Expected 0x00000000, Matches Actual 0x00000000
+
+     87935 SB: External read register x24, Expected 0x00000000, Matches Actual 0x00000000
+
+     87955 SB: External read register x25, Expected 0x00000000, Matches Actual 0x00000000
+
+     87975 SB: External read register x26, Expected 0x00000000, Matches Actual 0x00000000
+
+     87995 SB: External read register x27, Expected 0x00000000, Matches Actual 0x00000000
+
+     88015 SB: External read register x28, Expected 0x00000000, Matches Actual 0x00000000
+
+     88035 SB: External read register x29, Expected 0x00000000, Matches Actual 0x00000000
+
+     88055 SB: External read register x30, Expected 0x00000000, Matches Actual 0x00000000
+
+     88075 SB: External read register x31, Expected 0x00000000, Matches Actual 0x00000000
+
+     88125 SB: External read dmem[0x000], Expected 0x3c00d3c7, Matches Actual 0x3c00d3c7
+
+     88155 SB: External read dmem[0x001], Expected 0x8d9a2664, Matches Actual 0x8d9a2664
+
+     88185 SB: External read dmem[0x002], Expected 0xb2a321db, Matches Actual 0xb2a321db
+
+     88215 SB: External read dmem[0x003], Expected 0x2983433d, Matches Actual 0x2983433d
+
+     88245 SB: External read dmem[0x004], Expected 0xf3d79464, Matches Actual 0xf3d79464
+
+     88275 SB: External read dmem[0x005], Expected 0x3c2fef84, Matches Actual 0x3c2fef84
+
+     88305 SB: External read dmem[0x006], Expected 0x6d881970, Matches Actual 0x6d881970
+
+     88335 SB: External read dmem[0x007], Expected 0x3889feae, Matches Actual 0x3889feae
+
+     88365 SB: External read dmem[0x008], Expected 0xc27f1f3b, Matches Actual 0xc27f1f3b
+
+     88395 SB: External read dmem[0x009], Expected 0xfa19f51d, Matches Actual 0xfa19f51d
+
+     88425 SB: External read dmem[0x00a], Expected 0xcde2e1ac, Matches Actual 0xcde2e1ac
+
+     88455 SB: External read dmem[0x00b], Expected 0xc081ed9e, Matches Actual 0xc081ed9e
+
+     88485 SB: External read dmem[0x00c], Expected 0x16b167d6, Matches Actual 0x16b167d6
+
+     88515 SB: External read dmem[0x00d], Expected 0x9b002eeb, Matches Actual 0x9b002eeb
+
+     88545 SB: External read dmem[0x00e], Expected 0xb3483179, Matches Actual 0xb3483179
+
+     88575 SB: External read dmem[0x00f], Expected 0x43f07129, Matches Actual 0x43f07129
+
+
+=================================================================
+ TEST: add_overflow_wrap
+=================================================================
+     88605 Mon: Reset asserted
+
+     88675 Mon: External write Addr: 0x0000, Data: 0xfff00093
+
+     88675 SB: External write imem[0x000] <- 0xfff00093
+
+     88695 Mon: External write Addr: 0x0004, Data: 0x00100113
+
+     88695 SB: External write imem[0x001] <- 0x00100113
+
+     88715 Mon: External write Addr: 0x0008, Data: 0x002081b3
+
+     88715 SB: External write imem[0x002] <- 0x002081b3
+
+     88735 Mon: External write Addr: 0x000c, Data: 0x0020d233
+
+     88735 SB: External write imem[0x003] <- 0x0020d233
+
+     88755 Mon: External write Addr: 0x0010, Data: 0x002202b3
+
+     88755 SB: External write imem[0x004] <- 0x002202b3
+
+     88775 Mon: External write Addr: 0x0014, Data: 0x00528333
+
+     88775 SB: External write imem[0x005] <- 0x00528333
+
+     88795 Mon: External write Addr: 0x0018, Data: 0x00100073
+
+     88795 SB: External write imem[0x006] <- 0x00100073
+
+     88835 Mon: CPU started executing
+
+     89045 Mon: cpu_halted_o asserted
+
+     89075 SB: External read register x0, Expected 0x00000000, Matches Actual 0x00000000
+
+     89095 SB: External read register x1, Expected 0xffffffff, Matches Actual 0xffffffff
+
+     89115 SB: External read register x2, Expected 0x00000001, Matches Actual 0x00000001
+
+     89135 SB: External read register x3, Expected 0x00000000, Matches Actual 0x00000000
+
+     89155 SB: External read register x4, Expected 0x7fffffff, Matches Actual 0x7fffffff
+
+     89175 SB: External read register x5, Expected 0x80000000, Matches Actual 0x80000000
+
+     89195 SB: External read register x6, Expected 0x00000000, Matches Actual 0x00000000
+
+     89215 SB: External read register x7, Expected 0x00000000, Matches Actual 0x00000000
+
+     89235 SB: External read register x8, Expected 0x00000000, Matches Actual 0x00000000
+
+     89255 SB: External read register x9, Expected 0x00000000, Matches Actual 0x00000000
+
+     89275 SB: External read register x10, Expected 0x00000000, Matches Actual 0x00000000
+
+     89295 SB: External read register x11, Expected 0x00000000, Matches Actual 0x00000000
+
+     89315 SB: External read register x12, Expected 0x00000000, Matches Actual 0x00000000
+
+     89335 SB: External read register x13, Expected 0x00000000, Matches Actual 0x00000000
+
+     89355 SB: External read register x14, Expected 0x00000000, Matches Actual 0x00000000
+
+     89375 SB: External read register x15, Expected 0x00000000, Matches Actual 0x00000000
+
+     89395 SB: External read register x16, Expected 0x00000000, Matches Actual 0x00000000
+
+     89415 SB: External read register x17, Expected 0x00000000, Matches Actual 0x00000000
+
+     89435 SB: External read register x18, Expected 0x00000000, Matches Actual 0x00000000
+
+     89455 SB: External read register x19, Expected 0x00000000, Matches Actual 0x00000000
+
+     89475 SB: External read register x20, Expected 0x00000000, Matches Actual 0x00000000
+
+     89495 SB: External read register x21, Expected 0x00000000, Matches Actual 0x00000000
+
+     89515 SB: External read register x22, Expected 0x00000000, Matches Actual 0x00000000
+
+     89535 SB: External read register x23, Expected 0x00000000, Matches Actual 0x00000000
+
+     89555 SB: External read register x24, Expected 0x00000000, Matches Actual 0x00000000
+
+     89575 SB: External read register x25, Expected 0x00000000, Matches Actual 0x00000000
+
+     89595 SB: External read register x26, Expected 0x00000000, Matches Actual 0x00000000
+
+     89615 SB: External read register x27, Expected 0x00000000, Matches Actual 0x00000000
+
+     89635 SB: External read register x28, Expected 0x00000000, Matches Actual 0x00000000
+
+     89655 SB: External read register x29, Expected 0x00000000, Matches Actual 0x00000000
+
+     89675 SB: External read register x30, Expected 0x00000000, Matches Actual 0x00000000
+
+     89695 SB: External read register x31, Expected 0x00000000, Matches Actual 0x00000000
+
+     89745 SB: External read dmem[0x000], Expected 0x3c00d3c7, Matches Actual 0x3c00d3c7
+
+     89775 SB: External read dmem[0x001], Expected 0x8d9a2664, Matches Actual 0x8d9a2664
+
+     89805 SB: External read dmem[0x002], Expected 0xb2a321db, Matches Actual 0xb2a321db
+
+     89835 SB: External read dmem[0x003], Expected 0x2983433d, Matches Actual 0x2983433d
+
+     89865 SB: External read dmem[0x004], Expected 0xf3d79464, Matches Actual 0xf3d79464
+
+     89895 SB: External read dmem[0x005], Expected 0x3c2fef84, Matches Actual 0x3c2fef84
+
+     89925 SB: External read dmem[0x006], Expected 0x6d881970, Matches Actual 0x6d881970
+
+     89955 SB: External read dmem[0x007], Expected 0x3889feae, Matches Actual 0x3889feae
+
+     89985 SB: External read dmem[0x008], Expected 0xc27f1f3b, Matches Actual 0xc27f1f3b
+
+     90015 SB: External read dmem[0x009], Expected 0xfa19f51d, Matches Actual 0xfa19f51d
+
+     90045 SB: External read dmem[0x00a], Expected 0xcde2e1ac, Matches Actual 0xcde2e1ac
+
+     90075 SB: External read dmem[0x00b], Expected 0xc081ed9e, Matches Actual 0xc081ed9e
+
+     90105 SB: External read dmem[0x00c], Expected 0x16b167d6, Matches Actual 0x16b167d6
+
+     90135 SB: External read dmem[0x00d], Expected 0x9b002eeb, Matches Actual 0x9b002eeb
+
+     90165 SB: External read dmem[0x00e], Expected 0xb3483179, Matches Actual 0xb3483179
+
+     90195 SB: External read dmem[0x00f], Expected 0x43f07129, Matches Actual 0x43f07129
+
+
+=================================================================
+ TEST: sub_basic
+=================================================================
+     90225 Mon: Reset asserted
+
+     90295 Mon: External write Addr: 0x0000, Data: 0x00a00093
+
+     90295 SB: External write imem[0x000] <- 0x00a00093
+
+     90315 Mon: External write Addr: 0x0004, Data: 0x00300113
+
+     90315 SB: External write imem[0x001] <- 0x00300113
+
+     90335 Mon: External write Addr: 0x0008, Data: 0x402081b3
+
+     90335 SB: External write imem[0x002] <- 0x402081b3
+
+     90355 Mon: External write Addr: 0x000c, Data: 0x40110233
+
+     90355 SB: External write imem[0x003] <- 0x40110233
+
+     90375 Mon: External write Addr: 0x0010, Data: 0x401082b3
+
+     90375 SB: External write imem[0x004] <- 0x401082b3
+
+     90395 Mon: External write Addr: 0x0014, Data: 0x40200333
+
+     90395 SB: External write imem[0x005] <- 0x40200333
+
+     90415 Mon: External write Addr: 0x0018, Data: 0x400083b3
+
+     90415 SB: External write imem[0x006] <- 0x400083b3
+
+     90435 Mon: External write Addr: 0x001c, Data: 0x00100073
+
+     90435 SB: External write imem[0x007] <- 0x00100073
+
+     90475 Mon: CPU started executing
+
+     90715 Mon: cpu_halted_o asserted
+
+     90745 SB: External read register x0, Expected 0x00000000, Matches Actual 0x00000000
+
+     90765 SB: External read register x1, Expected 0x0000000a, Matches Actual 0x0000000a
+
+     90785 SB: External read register x2, Expected 0x00000003, Matches Actual 0x00000003
+
+     90805 SB: External read register x3, Expected 0x00000007, Matches Actual 0x00000007
+
+     90825 SB: External read register x4, Expected 0xfffffff9, Matches Actual 0xfffffff9
+
+     90845 SB: External read register x5, Expected 0x00000000, Matches Actual 0x00000000
+
+     90865 SB: External read register x6, Expected 0xfffffffd, Matches Actual 0xfffffffd
+
+     90885 SB: External read register x7, Expected 0x0000000a, Matches Actual 0x0000000a
+
+     90905 SB: External read register x8, Expected 0x00000000, Matches Actual 0x00000000
+
+     90925 SB: External read register x9, Expected 0x00000000, Matches Actual 0x00000000
+
+     90945 SB: External read register x10, Expected 0x00000000, Matches Actual 0x00000000
+
+     90965 SB: External read register x11, Expected 0x00000000, Matches Actual 0x00000000
+
+     90985 SB: External read register x12, Expected 0x00000000, Matches Actual 0x00000000
+
+     91005 SB: External read register x13, Expected 0x00000000, Matches Actual 0x00000000
+
+     91025 SB: External read register x14, Expected 0x00000000, Matches Actual 0x00000000
+
+     91045 SB: External read register x15, Expected 0x00000000, Matches Actual 0x00000000
+
+     91065 SB: External read register x16, Expected 0x00000000, Matches Actual 0x00000000
+
+     91085 SB: External read register x17, Expected 0x00000000, Matches Actual 0x00000000
+
+     91105 SB: External read register x18, Expected 0x00000000, Matches Actual 0x00000000
+
+     91125 SB: External read register x19, Expected 0x00000000, Matches Actual 0x00000000
+
+     91145 SB: External read register x20, Expected 0x00000000, Matches Actual 0x00000000
+
+     91165 SB: External read register x21, Expected 0x00000000, Matches Actual 0x00000000
+
+     91185 SB: External read register x22, Expected 0x00000000, Matches Actual 0x00000000
+
+     91205 SB: External read register x23, Expected 0x00000000, Matches Actual 0x00000000
+
+     91225 SB: External read register x24, Expected 0x00000000, Matches Actual 0x00000000
+
+     91245 SB: External read register x25, Expected 0x00000000, Matches Actual 0x00000000
+
+     91265 SB: External read register x26, Expected 0x00000000, Matches Actual 0x00000000
+
+     91285 SB: External read register x27, Expected 0x00000000, Matches Actual 0x00000000
+
+     91305 SB: External read register x28, Expected 0x00000000, Matches Actual 0x00000000
+
+     91325 SB: External read register x29, Expected 0x00000000, Matches Actual 0x00000000
+
+     91345 SB: External read register x30, Expected 0x00000000, Matches Actual 0x00000000
+
+     91365 SB: External read register x31, Expected 0x00000000, Matches Actual 0x00000000
+
+     91415 SB: External read dmem[0x000], Expected 0x3c00d3c7, Matches Actual 0x3c00d3c7
+
+     91445 SB: External read dmem[0x001], Expected 0x8d9a2664, Matches Actual 0x8d9a2664
+
+     91475 SB: External read dmem[0x002], Expected 0xb2a321db, Matches Actual 0xb2a321db
+
+     91505 SB: External read dmem[0x003], Expected 0x2983433d, Matches Actual 0x2983433d
+
+     91535 SB: External read dmem[0x004], Expected 0xf3d79464, Matches Actual 0xf3d79464
+
+     91565 SB: External read dmem[0x005], Expected 0x3c2fef84, Matches Actual 0x3c2fef84
+
+     91595 SB: External read dmem[0x006], Expected 0x6d881970, Matches Actual 0x6d881970
+
+     91625 SB: External read dmem[0x007], Expected 0x3889feae, Matches Actual 0x3889feae
+
+     91655 SB: External read dmem[0x008], Expected 0xc27f1f3b, Matches Actual 0xc27f1f3b
+
+     91685 SB: External read dmem[0x009], Expected 0xfa19f51d, Matches Actual 0xfa19f51d
+
+     91715 SB: External read dmem[0x00a], Expected 0xcde2e1ac, Matches Actual 0xcde2e1ac
+
+     91745 SB: External read dmem[0x00b], Expected 0xc081ed9e, Matches Actual 0xc081ed9e
+
+     91775 SB: External read dmem[0x00c], Expected 0x16b167d6, Matches Actual 0x16b167d6
+
+     91805 SB: External read dmem[0x00d], Expected 0x9b002eeb, Matches Actual 0x9b002eeb
+
+     91835 SB: External read dmem[0x00e], Expected 0xb3483179, Matches Actual 0xb3483179
+
+     91865 SB: External read dmem[0x00f], Expected 0x43f07129, Matches Actual 0x43f07129
+
+
+=================================================================
+ TEST: sub_wrap_min_int
+=================================================================
+     91895 Mon: Reset asserted
+
+     91965 Mon: External write Addr: 0x0000, Data: 0x00100093
+
+     91965 SB: External write imem[0x000] <- 0x00100093
+
+     91985 Mon: External write Addr: 0x0004, Data: 0x01f00113
+
+     91985 SB: External write imem[0x001] <- 0x01f00113
+
+     92005 Mon: External write Addr: 0x0008, Data: 0x002091b3
+
+     92005 SB: External write imem[0x002] <- 0x002091b3
+
+     92025 Mon: External write Addr: 0x000c, Data: 0x40118233
+
+     92025 SB: External write imem[0x003] <- 0x40118233
+
+     92045 Mon: External write Addr: 0x0010, Data: 0x403002b3
+
+     92045 SB: External write imem[0x004] <- 0x403002b3
+
+     92065 Mon: External write Addr: 0x0014, Data: 0x40100333
+
+     92065 SB: External write imem[0x005] <- 0x40100333
+
+     92085 Mon: External write Addr: 0x0018, Data: 0x00100073
+
+     92085 SB: External write imem[0x006] <- 0x00100073
+
+     92125 Mon: CPU started executing
+
+     92335 Mon: cpu_halted_o asserted
+
+     92365 SB: External read register x0, Expected 0x00000000, Matches Actual 0x00000000
+
+     92385 SB: External read register x1, Expected 0x00000001, Matches Actual 0x00000001
+
+     92405 SB: External read register x2, Expected 0x0000001f, Matches Actual 0x0000001f
+
+     92425 SB: External read register x3, Expected 0x80000000, Matches Actual 0x80000000
+
+     92445 SB: External read register x4, Expected 0x7fffffff, Matches Actual 0x7fffffff
+
+     92465 SB: External read register x5, Expected 0x80000000, Matches Actual 0x80000000
+
+     92485 SB: External read register x6, Expected 0xffffffff, Matches Actual 0xffffffff
+
+     92505 SB: External read register x7, Expected 0x00000000, Matches Actual 0x00000000
+
+     92525 SB: External read register x8, Expected 0x00000000, Matches Actual 0x00000000
+
+     92545 SB: External read register x9, Expected 0x00000000, Matches Actual 0x00000000
+
+     92565 SB: External read register x10, Expected 0x00000000, Matches Actual 0x00000000
+
+     92585 SB: External read register x11, Expected 0x00000000, Matches Actual 0x00000000
+
+     92605 SB: External read register x12, Expected 0x00000000, Matches Actual 0x00000000
+
+     92625 SB: External read register x13, Expected 0x00000000, Matches Actual 0x00000000
+
+     92645 SB: External read register x14, Expected 0x00000000, Matches Actual 0x00000000
+
+     92665 SB: External read register x15, Expected 0x00000000, Matches Actual 0x00000000
+
+     92685 SB: External read register x16, Expected 0x00000000, Matches Actual 0x00000000
+
+     92705 SB: External read register x17, Expected 0x00000000, Matches Actual 0x00000000
+
+     92725 SB: External read register x18, Expected 0x00000000, Matches Actual 0x00000000
+
+     92745 SB: External read register x19, Expected 0x00000000, Matches Actual 0x00000000
+
+     92765 SB: External read register x20, Expected 0x00000000, Matches Actual 0x00000000
+
+     92785 SB: External read register x21, Expected 0x00000000, Matches Actual 0x00000000
+
+     92805 SB: External read register x22, Expected 0x00000000, Matches Actual 0x00000000
+
+     92825 SB: External read register x23, Expected 0x00000000, Matches Actual 0x00000000
+
+     92845 SB: External read register x24, Expected 0x00000000, Matches Actual 0x00000000
+
+     92865 SB: External read register x25, Expected 0x00000000, Matches Actual 0x00000000
+
+     92885 SB: External read register x26, Expected 0x00000000, Matches Actual 0x00000000
+
+     92905 SB: External read register x27, Expected 0x00000000, Matches Actual 0x00000000
+
+     92925 SB: External read register x28, Expected 0x00000000, Matches Actual 0x00000000
+
+     92945 SB: External read register x29, Expected 0x00000000, Matches Actual 0x00000000
+
+     92965 SB: External read register x30, Expected 0x00000000, Matches Actual 0x00000000
+
+     92985 SB: External read register x31, Expected 0x00000000, Matches Actual 0x00000000
+
+     93035 SB: External read dmem[0x000], Expected 0x3c00d3c7, Matches Actual 0x3c00d3c7
+
+     93065 SB: External read dmem[0x001], Expected 0x8d9a2664, Matches Actual 0x8d9a2664
+
+     93095 SB: External read dmem[0x002], Expected 0xb2a321db, Matches Actual 0xb2a321db
+
+     93125 SB: External read dmem[0x003], Expected 0x2983433d, Matches Actual 0x2983433d
+
+     93155 SB: External read dmem[0x004], Expected 0xf3d79464, Matches Actual 0xf3d79464
+
+     93185 SB: External read dmem[0x005], Expected 0x3c2fef84, Matches Actual 0x3c2fef84
+
+     93215 SB: External read dmem[0x006], Expected 0x6d881970, Matches Actual 0x6d881970
+
+     93245 SB: External read dmem[0x007], Expected 0x3889feae, Matches Actual 0x3889feae
+
+     93275 SB: External read dmem[0x008], Expected 0xc27f1f3b, Matches Actual 0xc27f1f3b
+
+     93305 SB: External read dmem[0x009], Expected 0xfa19f51d, Matches Actual 0xfa19f51d
+
+     93335 SB: External read dmem[0x00a], Expected 0xcde2e1ac, Matches Actual 0xcde2e1ac
+
+     93365 SB: External read dmem[0x00b], Expected 0xc081ed9e, Matches Actual 0xc081ed9e
+
+     93395 SB: External read dmem[0x00c], Expected 0x16b167d6, Matches Actual 0x16b167d6
+
+     93425 SB: External read dmem[0x00d], Expected 0x9b002eeb, Matches Actual 0x9b002eeb
+
+     93455 SB: External read dmem[0x00e], Expected 0xb3483179, Matches Actual 0xb3483179
+
+     93485 SB: External read dmem[0x00f], Expected 0x43f07129, Matches Actual 0x43f07129
+
+
+=================================================================
+ TEST: sll_amounts
+=================================================================
+     93515 Mon: Reset asserted
+
+     93585 Mon: External write Addr: 0x0000, Data: 0x00100093
+
+     93585 SB: External write imem[0x000] <- 0x00100093
+
+     93605 Mon: External write Addr: 0x0004, Data: 0x00000113
+
+     93605 SB: External write imem[0x001] <- 0x00000113
+
+     93625 Mon: External write Addr: 0x0008, Data: 0x01f00193
+
+     93625 SB: External write imem[0x002] <- 0x01f00193
+
+     93645 Mon: External write Addr: 0x000c, Data: 0xfff00213
+
+     93645 SB: External write imem[0x003] <- 0xfff00213
+
+     93665 Mon: External write Addr: 0x0010, Data: 0x00209333
+
+     93665 SB: External write imem[0x004] <- 0x00209333
+
+     93685 Mon: External write Addr: 0x0014, Data: 0x003093b3
+
+     93685 SB: External write imem[0x005] <- 0x003093b3
+
+     93705 Mon: External write Addr: 0x0018, Data: 0x00221433
+
+     93705 SB: External write imem[0x006] <- 0x00221433
+
+     93725 Mon: External write Addr: 0x001c, Data: 0x003214b3
+
+     93725 SB: External write imem[0x007] <- 0x003214b3
+
+     93745 Mon: External write Addr: 0x0020, Data: 0x00100073
+
+     93745 SB: External write imem[0x008] <- 0x00100073
+
+     93785 Mon: CPU started executing
+
+     94055 Mon: cpu_halted_o asserted
+
+     94085 SB: External read register x0, Expected 0x00000000, Matches Actual 0x00000000
+
+     94105 SB: External read register x1, Expected 0x00000001, Matches Actual 0x00000001
+
+     94125 SB: External read register x2, Expected 0x00000000, Matches Actual 0x00000000
+
+     94145 SB: External read register x3, Expected 0x0000001f, Matches Actual 0x0000001f
+
+     94165 SB: External read register x4, Expected 0xffffffff, Matches Actual 0xffffffff
+
+     94185 SB: External read register x5, Expected 0x00000000, Matches Actual 0x00000000
+
+     94205 SB: External read register x6, Expected 0x00000001, Matches Actual 0x00000001
+
+     94225 SB: External read register x7, Expected 0x80000000, Matches Actual 0x80000000
+
+     94245 SB: External read register x8, Expected 0xffffffff, Matches Actual 0xffffffff
+
+     94265 SB: External read register x9, Expected 0x80000000, Matches Actual 0x80000000
+
+     94285 SB: External read register x10, Expected 0x00000000, Matches Actual 0x00000000
+
+     94305 SB: External read register x11, Expected 0x00000000, Matches Actual 0x00000000
+
+     94325 SB: External read register x12, Expected 0x00000000, Matches Actual 0x00000000
+
+     94345 SB: External read register x13, Expected 0x00000000, Matches Actual 0x00000000
+
+     94365 SB: External read register x14, Expected 0x00000000, Matches Actual 0x00000000
+
+     94385 SB: External read register x15, Expected 0x00000000, Matches Actual 0x00000000
+
+     94405 SB: External read register x16, Expected 0x00000000, Matches Actual 0x00000000
+
+     94425 SB: External read register x17, Expected 0x00000000, Matches Actual 0x00000000
+
+     94445 SB: External read register x18, Expected 0x00000000, Matches Actual 0x00000000
+
+     94465 SB: External read register x19, Expected 0x00000000, Matches Actual 0x00000000
+
+     94485 SB: External read register x20, Expected 0x00000000, Matches Actual 0x00000000
+
+     94505 SB: External read register x21, Expected 0x00000000, Matches Actual 0x00000000
+
+     94525 SB: External read register x22, Expected 0x00000000, Matches Actual 0x00000000
+
+     94545 SB: External read register x23, Expected 0x00000000, Matches Actual 0x00000000
+
+     94565 SB: External read register x24, Expected 0x00000000, Matches Actual 0x00000000
+
+     94585 SB: External read register x25, Expected 0x00000000, Matches Actual 0x00000000
+
+     94605 SB: External read register x26, Expected 0x00000000, Matches Actual 0x00000000
+
+     94625 SB: External read register x27, Expected 0x00000000, Matches Actual 0x00000000
+
+     94645 SB: External read register x28, Expected 0x00000000, Matches Actual 0x00000000
+
+     94665 SB: External read register x29, Expected 0x00000000, Matches Actual 0x00000000
+
+     94685 SB: External read register x30, Expected 0x00000000, Matches Actual 0x00000000
+
+     94705 SB: External read register x31, Expected 0x00000000, Matches Actual 0x00000000
+
+     94755 SB: External read dmem[0x000], Expected 0x3c00d3c7, Matches Actual 0x3c00d3c7
+
+     94785 SB: External read dmem[0x001], Expected 0x8d9a2664, Matches Actual 0x8d9a2664
+
+     94815 SB: External read dmem[0x002], Expected 0xb2a321db, Matches Actual 0xb2a321db
+
+     94845 SB: External read dmem[0x003], Expected 0x2983433d, Matches Actual 0x2983433d
+
+     94875 SB: External read dmem[0x004], Expected 0xf3d79464, Matches Actual 0xf3d79464
+
+     94905 SB: External read dmem[0x005], Expected 0x3c2fef84, Matches Actual 0x3c2fef84
+
+     94935 SB: External read dmem[0x006], Expected 0x6d881970, Matches Actual 0x6d881970
+
+     94965 SB: External read dmem[0x007], Expected 0x3889feae, Matches Actual 0x3889feae
+
+     94995 SB: External read dmem[0x008], Expected 0xc27f1f3b, Matches Actual 0xc27f1f3b
+
+     95025 SB: External read dmem[0x009], Expected 0xfa19f51d, Matches Actual 0xfa19f51d
+
+     95055 SB: External read dmem[0x00a], Expected 0xcde2e1ac, Matches Actual 0xcde2e1ac
+
+     95085 SB: External read dmem[0x00b], Expected 0xc081ed9e, Matches Actual 0xc081ed9e
+
+     95115 SB: External read dmem[0x00c], Expected 0x16b167d6, Matches Actual 0x16b167d6
+
+     95145 SB: External read dmem[0x00d], Expected 0x9b002eeb, Matches Actual 0x9b002eeb
+
+     95175 SB: External read dmem[0x00e], Expected 0xb3483179, Matches Actual 0xb3483179
+
+     95205 SB: External read dmem[0x00f], Expected 0x43f07129, Matches Actual 0x43f07129
+
+
+=================================================================
+ TEST: srl_logical_fill
+=================================================================
+     95235 Mon: Reset asserted
+
+     95305 Mon: External write Addr: 0x0000, Data: 0x00100093
+
+     95305 SB: External write imem[0x000] <- 0x00100093
+
+     95325 Mon: External write Addr: 0x0004, Data: 0xfff00113
+
+     95325 SB: External write imem[0x001] <- 0xfff00113
+
+     95345 Mon: External write Addr: 0x0008, Data: 0x01f00193
+
+     95345 SB: External write imem[0x002] <- 0x01f00193
+
+     95365 Mon: External write Addr: 0x000c, Data: 0x00100213
+
+     95365 SB: External write imem[0x003] <- 0x00100213
+
+     95385 Mon: External write Addr: 0x0010, Data: 0x00000293
+
+     95385 SB: External write imem[0x004] <- 0x00000293
+
+     95405 Mon: External write Addr: 0x0014, Data: 0x00309333
+
+     95405 SB: External write imem[0x005] <- 0x00309333
+
+     95425 Mon: External write Addr: 0x0018, Data: 0x004153b3
+
+     95425 SB: External write imem[0x006] <- 0x004153b3
+
+     95445 Mon: External write Addr: 0x001c, Data: 0x00315433
+
+     95445 SB: External write imem[0x007] <- 0x00315433
+
+     95465 Mon: External write Addr: 0x0020, Data: 0x005154b3
+
+     95465 SB: External write imem[0x008] <- 0x005154b3
+
+     95485 Mon: External write Addr: 0x0024, Data: 0x00335533
+
+     95485 SB: External write imem[0x009] <- 0x00335533
+
+     95505 Mon: External write Addr: 0x0028, Data: 0x00100073
+
+     95505 SB: External write imem[0x00a] <- 0x00100073
+
+     95545 Mon: CPU started executing
+
+     95875 Mon: cpu_halted_o asserted
+
+     95905 SB: External read register x0, Expected 0x00000000, Matches Actual 0x00000000
+
+     95925 SB: External read register x1, Expected 0x00000001, Matches Actual 0x00000001
+
+     95945 SB: External read register x2, Expected 0xffffffff, Matches Actual 0xffffffff
+
+     95965 SB: External read register x3, Expected 0x0000001f, Matches Actual 0x0000001f
+
+     95985 SB: External read register x4, Expected 0x00000001, Matches Actual 0x00000001
+
+     96005 SB: External read register x5, Expected 0x00000000, Matches Actual 0x00000000
+
+     96025 SB: External read register x6, Expected 0x80000000, Matches Actual 0x80000000
+
+     96045 SB: External read register x7, Expected 0x7fffffff, Matches Actual 0x7fffffff
+
+     96065 SB: External read register x8, Expected 0x00000001, Matches Actual 0x00000001
+
+     96085 SB: External read register x9, Expected 0xffffffff, Matches Actual 0xffffffff
+
+     96105 SB: External read register x10, Expected 0x00000001, Matches Actual 0x00000001
+
+     96125 SB: External read register x11, Expected 0x00000000, Matches Actual 0x00000000
+
+     96145 SB: External read register x12, Expected 0x00000000, Matches Actual 0x00000000
+
+     96165 SB: External read register x13, Expected 0x00000000, Matches Actual 0x00000000
+
+     96185 SB: External read register x14, Expected 0x00000000, Matches Actual 0x00000000
+
+     96205 SB: External read register x15, Expected 0x00000000, Matches Actual 0x00000000
+
+     96225 SB: External read register x16, Expected 0x00000000, Matches Actual 0x00000000
+
+     96245 SB: External read register x17, Expected 0x00000000, Matches Actual 0x00000000
+
+     96265 SB: External read register x18, Expected 0x00000000, Matches Actual 0x00000000
+
+     96285 SB: External read register x19, Expected 0x00000000, Matches Actual 0x00000000
+
+     96305 SB: External read register x20, Expected 0x00000000, Matches Actual 0x00000000
+
+     96325 SB: External read register x21, Expected 0x00000000, Matches Actual 0x00000000
+
+     96345 SB: External read register x22, Expected 0x00000000, Matches Actual 0x00000000
+
+     96365 SB: External read register x23, Expected 0x00000000, Matches Actual 0x00000000
+
+     96385 SB: External read register x24, Expected 0x00000000, Matches Actual 0x00000000
+
+     96405 SB: External read register x25, Expected 0x00000000, Matches Actual 0x00000000
+
+     96425 SB: External read register x26, Expected 0x00000000, Matches Actual 0x00000000
+
+     96445 SB: External read register x27, Expected 0x00000000, Matches Actual 0x00000000
+
+     96465 SB: External read register x28, Expected 0x00000000, Matches Actual 0x00000000
+
+     96485 SB: External read register x29, Expected 0x00000000, Matches Actual 0x00000000
+
+     96505 SB: External read register x30, Expected 0x00000000, Matches Actual 0x00000000
+
+     96525 SB: External read register x31, Expected 0x00000000, Matches Actual 0x00000000
+
+     96575 SB: External read dmem[0x000], Expected 0x3c00d3c7, Matches Actual 0x3c00d3c7
+
+     96605 SB: External read dmem[0x001], Expected 0x8d9a2664, Matches Actual 0x8d9a2664
+
+     96635 SB: External read dmem[0x002], Expected 0xb2a321db, Matches Actual 0xb2a321db
+
+     96665 SB: External read dmem[0x003], Expected 0x2983433d, Matches Actual 0x2983433d
+
+     96695 SB: External read dmem[0x004], Expected 0xf3d79464, Matches Actual 0xf3d79464
+
+     96725 SB: External read dmem[0x005], Expected 0x3c2fef84, Matches Actual 0x3c2fef84
+
+     96755 SB: External read dmem[0x006], Expected 0x6d881970, Matches Actual 0x6d881970
+
+     96785 SB: External read dmem[0x007], Expected 0x3889feae, Matches Actual 0x3889feae
+
+     96815 SB: External read dmem[0x008], Expected 0xc27f1f3b, Matches Actual 0xc27f1f3b
+
+     96845 SB: External read dmem[0x009], Expected 0xfa19f51d, Matches Actual 0xfa19f51d
+
+     96875 SB: External read dmem[0x00a], Expected 0xcde2e1ac, Matches Actual 0xcde2e1ac
+
+     96905 SB: External read dmem[0x00b], Expected 0xc081ed9e, Matches Actual 0xc081ed9e
+
+     96935 SB: External read dmem[0x00c], Expected 0x16b167d6, Matches Actual 0x16b167d6
+
+     96965 SB: External read dmem[0x00d], Expected 0x9b002eeb, Matches Actual 0x9b002eeb
+
+     96995 SB: External read dmem[0x00e], Expected 0xb3483179, Matches Actual 0xb3483179
+
+     97025 SB: External read dmem[0x00f], Expected 0x43f07129, Matches Actual 0x43f07129
+
+
+=================================================================
+ TEST: shift_amount_low5
+=================================================================
+     97055 Mon: Reset asserted
+
+     97125 Mon: External write Addr: 0x0000, Data: 0x00100093
+
+     97125 SB: External write imem[0x000] <- 0x00100093
+
+     97145 Mon: External write Addr: 0x0004, Data: 0x02000113
+
+     97145 SB: External write imem[0x001] <- 0x02000113
+
+     97165 Mon: External write Addr: 0x0008, Data: 0x02100193
+
+     97165 SB: External write imem[0x002] <- 0x02100193
+
+     97185 Mon: External write Addr: 0x000c, Data: 0xfff00213
+
+     97185 SB: External write imem[0x003] <- 0xfff00213
+
+     97205 Mon: External write Addr: 0x0010, Data: 0x002092b3
+
+     97205 SB: External write imem[0x004] <- 0x002092b3
+
+     97225 Mon: External write Addr: 0x0014, Data: 0x00309333
+
+     97225 SB: External write imem[0x005] <- 0x00309333
+
+     97245 Mon: External write Addr: 0x0018, Data: 0x004093b3
+
+     97245 SB: External write imem[0x006] <- 0x004093b3
+
+     97265 Mon: External write Addr: 0x001c, Data: 0x0033d433
+
+     97265 SB: External write imem[0x007] <- 0x0033d433
+
+     97285 Mon: External write Addr: 0x0020, Data: 0x0023d4b3
+
+     97285 SB: External write imem[0x008] <- 0x0023d4b3
+
+     97305 Mon: External write Addr: 0x0024, Data: 0x00100073
+
+     97305 SB: External write imem[0x009] <- 0x00100073
+
+     97345 Mon: CPU started executing
+
+     97645 Mon: cpu_halted_o asserted
+
+     97675 SB: External read register x0, Expected 0x00000000, Matches Actual 0x00000000
+
+     97695 SB: External read register x1, Expected 0x00000001, Matches Actual 0x00000001
+
+     97715 SB: External read register x2, Expected 0x00000020, Matches Actual 0x00000020
+
+     97735 SB: External read register x3, Expected 0x00000021, Matches Actual 0x00000021
+
+     97755 SB: External read register x4, Expected 0xffffffff, Matches Actual 0xffffffff
+
+     97775 SB: External read register x5, Expected 0x00000001, Matches Actual 0x00000001
+
+     97795 SB: External read register x6, Expected 0x00000002, Matches Actual 0x00000002
+
+     97815 SB: External read register x7, Expected 0x80000000, Matches Actual 0x80000000
+
+     97835 SB: External read register x8, Expected 0x40000000, Matches Actual 0x40000000
+
+     97855 SB: External read register x9, Expected 0x80000000, Matches Actual 0x80000000
+
+     97875 SB: External read register x10, Expected 0x00000000, Matches Actual 0x00000000
+
+     97895 SB: External read register x11, Expected 0x00000000, Matches Actual 0x00000000
+
+     97915 SB: External read register x12, Expected 0x00000000, Matches Actual 0x00000000
+
+     97935 SB: External read register x13, Expected 0x00000000, Matches Actual 0x00000000
+
+     97955 SB: External read register x14, Expected 0x00000000, Matches Actual 0x00000000
+
+     97975 SB: External read register x15, Expected 0x00000000, Matches Actual 0x00000000
+
+     97995 SB: External read register x16, Expected 0x00000000, Matches Actual 0x00000000
+
+     98015 SB: External read register x17, Expected 0x00000000, Matches Actual 0x00000000
+
+     98035 SB: External read register x18, Expected 0x00000000, Matches Actual 0x00000000
+
+     98055 SB: External read register x19, Expected 0x00000000, Matches Actual 0x00000000
+
+     98075 SB: External read register x20, Expected 0x00000000, Matches Actual 0x00000000
+
+     98095 SB: External read register x21, Expected 0x00000000, Matches Actual 0x00000000
+
+     98115 SB: External read register x22, Expected 0x00000000, Matches Actual 0x00000000
+
+     98135 SB: External read register x23, Expected 0x00000000, Matches Actual 0x00000000
+
+     98155 SB: External read register x24, Expected 0x00000000, Matches Actual 0x00000000
+
+     98175 SB: External read register x25, Expected 0x00000000, Matches Actual 0x00000000
+
+     98195 SB: External read register x26, Expected 0x00000000, Matches Actual 0x00000000
+
+     98215 SB: External read register x27, Expected 0x00000000, Matches Actual 0x00000000
+
+     98235 SB: External read register x28, Expected 0x00000000, Matches Actual 0x00000000
+
+     98255 SB: External read register x29, Expected 0x00000000, Matches Actual 0x00000000
+
+     98275 SB: External read register x30, Expected 0x00000000, Matches Actual 0x00000000
+
+     98295 SB: External read register x31, Expected 0x00000000, Matches Actual 0x00000000
+
+     98345 SB: External read dmem[0x000], Expected 0x3c00d3c7, Matches Actual 0x3c00d3c7
+
+     98375 SB: External read dmem[0x001], Expected 0x8d9a2664, Matches Actual 0x8d9a2664
+
+     98405 SB: External read dmem[0x002], Expected 0xb2a321db, Matches Actual 0xb2a321db
+
+     98435 SB: External read dmem[0x003], Expected 0x2983433d, Matches Actual 0x2983433d
+
+     98465 SB: External read dmem[0x004], Expected 0xf3d79464, Matches Actual 0xf3d79464
+
+     98495 SB: External read dmem[0x005], Expected 0x3c2fef84, Matches Actual 0x3c2fef84
+
+     98525 SB: External read dmem[0x006], Expected 0x6d881970, Matches Actual 0x6d881970
+
+     98555 SB: External read dmem[0x007], Expected 0x3889feae, Matches Actual 0x3889feae
+
+     98585 SB: External read dmem[0x008], Expected 0xc27f1f3b, Matches Actual 0xc27f1f3b
+
+     98615 SB: External read dmem[0x009], Expected 0xfa19f51d, Matches Actual 0xfa19f51d
+
+     98645 SB: External read dmem[0x00a], Expected 0xcde2e1ac, Matches Actual 0xcde2e1ac
+
+     98675 SB: External read dmem[0x00b], Expected 0xc081ed9e, Matches Actual 0xc081ed9e
+
+     98705 SB: External read dmem[0x00c], Expected 0x16b167d6, Matches Actual 0x16b167d6
+
+     98735 SB: External read dmem[0x00d], Expected 0x9b002eeb, Matches Actual 0x9b002eeb
+
+     98765 SB: External read dmem[0x00e], Expected 0xb3483179, Matches Actual 0xb3483179
+
+     98795 SB: External read dmem[0x00f], Expected 0x43f07129, Matches Actual 0x43f07129
+
+
+=================================================================
+ TEST: addi_rd_equals_rs1
+=================================================================
+     98825 Mon: Reset asserted
+
+     98895 Mon: External write Addr: 0x0000, Data: 0x00100093
+
+     98895 SB: External write imem[0x000] <- 0x00100093
+
+     98915 Mon: External write Addr: 0x0004, Data: 0x00108093
+
+     98915 SB: External write imem[0x001] <- 0x00108093
+
+     98935 Mon: External write Addr: 0x0008, Data: 0x00108093
+
+     98935 SB: External write imem[0x002] <- 0x00108093
+
+     98955 Mon: External write Addr: 0x000c, Data: 0x00a08093
+
+     98955 SB: External write imem[0x003] <- 0x00a08093
+
+     98975 Mon: External write Addr: 0x0010, Data: 0x001080b3
+
+     98975 SB: External write imem[0x004] <- 0x001080b3
+
+     98995 Mon: External write Addr: 0x0014, Data: 0x00008133
+
+     98995 SB: External write imem[0x005] <- 0x00008133
+
+     99015 Mon: External write Addr: 0x0018, Data: 0x00100073
+
+     99015 SB: External write imem[0x006] <- 0x00100073
+
+     99055 Mon: CPU started executing
+
+     99265 Mon: cpu_halted_o asserted
+
+     99295 SB: External read register x0, Expected 0x00000000, Matches Actual 0x00000000
+
+     99315 SB: External read register x1, Expected 0x0000001a, Matches Actual 0x0000001a
+
+     99335 SB: External read register x2, Expected 0x0000001a, Matches Actual 0x0000001a
+
+     99355 SB: External read register x3, Expected 0x00000000, Matches Actual 0x00000000
+
+     99375 SB: External read register x4, Expected 0x00000000, Matches Actual 0x00000000
+
+     99395 SB: External read register x5, Expected 0x00000000, Matches Actual 0x00000000
+
+     99415 SB: External read register x6, Expected 0x00000000, Matches Actual 0x00000000
+
+     99435 SB: External read register x7, Expected 0x00000000, Matches Actual 0x00000000
+
+     99455 SB: External read register x8, Expected 0x00000000, Matches Actual 0x00000000
+
+     99475 SB: External read register x9, Expected 0x00000000, Matches Actual 0x00000000
+
+     99495 SB: External read register x10, Expected 0x00000000, Matches Actual 0x00000000
+
+     99515 SB: External read register x11, Expected 0x00000000, Matches Actual 0x00000000
+
+     99535 SB: External read register x12, Expected 0x00000000, Matches Actual 0x00000000
+
+     99555 SB: External read register x13, Expected 0x00000000, Matches Actual 0x00000000
+
+     99575 SB: External read register x14, Expected 0x00000000, Matches Actual 0x00000000
+
+     99595 SB: External read register x15, Expected 0x00000000, Matches Actual 0x00000000
+
+     99615 SB: External read register x16, Expected 0x00000000, Matches Actual 0x00000000
+
+     99635 SB: External read register x17, Expected 0x00000000, Matches Actual 0x00000000
+
+     99655 SB: External read register x18, Expected 0x00000000, Matches Actual 0x00000000
+
+     99675 SB: External read register x19, Expected 0x00000000, Matches Actual 0x00000000
+
+     99695 SB: External read register x20, Expected 0x00000000, Matches Actual 0x00000000
+
+     99715 SB: External read register x21, Expected 0x00000000, Matches Actual 0x00000000
+
+     99735 SB: External read register x22, Expected 0x00000000, Matches Actual 0x00000000
+
+     99755 SB: External read register x23, Expected 0x00000000, Matches Actual 0x00000000
+
+     99775 SB: External read register x24, Expected 0x00000000, Matches Actual 0x00000000
+
+     99795 SB: External read register x25, Expected 0x00000000, Matches Actual 0x00000000
+
+     99815 SB: External read register x26, Expected 0x00000000, Matches Actual 0x00000000
+
+     99835 SB: External read register x27, Expected 0x00000000, Matches Actual 0x00000000
+
+     99855 SB: External read register x28, Expected 0x00000000, Matches Actual 0x00000000
+
+     99875 SB: External read register x29, Expected 0x00000000, Matches Actual 0x00000000
+
+     99895 SB: External read register x30, Expected 0x00000000, Matches Actual 0x00000000
+
+     99915 SB: External read register x31, Expected 0x00000000, Matches Actual 0x00000000
+
+     99965 SB: External read dmem[0x000], Expected 0x3c00d3c7, Matches Actual 0x3c00d3c7
+
+     99995 SB: External read dmem[0x001], Expected 0x8d9a2664, Matches Actual 0x8d9a2664
+
+    100025 SB: External read dmem[0x002], Expected 0xb2a321db, Matches Actual 0xb2a321db
+
+    100055 SB: External read dmem[0x003], Expected 0x2983433d, Matches Actual 0x2983433d
+
+    100085 SB: External read dmem[0x004], Expected 0xf3d79464, Matches Actual 0xf3d79464
+
+    100115 SB: External read dmem[0x005], Expected 0x3c2fef84, Matches Actual 0x3c2fef84
+
+    100145 SB: External read dmem[0x006], Expected 0x6d881970, Matches Actual 0x6d881970
+
+    100175 SB: External read dmem[0x007], Expected 0x3889feae, Matches Actual 0x3889feae
+
+    100205 SB: External read dmem[0x008], Expected 0xc27f1f3b, Matches Actual 0xc27f1f3b
+
+    100235 SB: External read dmem[0x009], Expected 0xfa19f51d, Matches Actual 0xfa19f51d
+
+    100265 SB: External read dmem[0x00a], Expected 0xcde2e1ac, Matches Actual 0xcde2e1ac
+
+    100295 SB: External read dmem[0x00b], Expected 0xc081ed9e, Matches Actual 0xc081ed9e
+
+    100325 SB: External read dmem[0x00c], Expected 0x16b167d6, Matches Actual 0x16b167d6
+
+    100355 SB: External read dmem[0x00d], Expected 0x9b002eeb, Matches Actual 0x9b002eeb
+
+    100385 SB: External read dmem[0x00e], Expected 0xb3483179, Matches Actual 0xb3483179
+
+    100415 SB: External read dmem[0x00f], Expected 0x43f07129, Matches Actual 0x43f07129
+
+
+=================================================================
+ TEST: waw_overwrite
+=================================================================
+    100445 Mon: Reset asserted
+
+    100515 Mon: External write Addr: 0x0000, Data: 0x00100093
+
+    100515 SB: External write imem[0x000] <- 0x00100093
+
+    100535 Mon: External write Addr: 0x0004, Data: 0x00200093
+
+    100535 SB: External write imem[0x001] <- 0x00200093
+
+    100555 Mon: External write Addr: 0x0008, Data: 0x00300093
+
+    100555 SB: External write imem[0x002] <- 0x00300093
+
+    100575 Mon: External write Addr: 0x000c, Data: 0x00008133
+
+    100575 SB: External write imem[0x003] <- 0x00008133
+
+    100595 Mon: External write Addr: 0x0010, Data: 0x00100073
+
+    100595 SB: External write imem[0x004] <- 0x00100073
+
+    100635 Mon: CPU started executing
+
+    100785 Mon: cpu_halted_o asserted
+
+    100815 SB: External read register x0, Expected 0x00000000, Matches Actual 0x00000000
+
+    100835 SB: External read register x1, Expected 0x00000003, Matches Actual 0x00000003
+
+    100855 SB: External read register x2, Expected 0x00000003, Matches Actual 0x00000003
+
+    100875 SB: External read register x3, Expected 0x00000000, Matches Actual 0x00000000
+
+    100895 SB: External read register x4, Expected 0x00000000, Matches Actual 0x00000000
+
+    100915 SB: External read register x5, Expected 0x00000000, Matches Actual 0x00000000
+
+    100935 SB: External read register x6, Expected 0x00000000, Matches Actual 0x00000000
+
+    100955 SB: External read register x7, Expected 0x00000000, Matches Actual 0x00000000
+
+    100975 SB: External read register x8, Expected 0x00000000, Matches Actual 0x00000000
+
+    100995 SB: External read register x9, Expected 0x00000000, Matches Actual 0x00000000
+
+    101015 SB: External read register x10, Expected 0x00000000, Matches Actual 0x00000000
+
+    101035 SB: External read register x11, Expected 0x00000000, Matches Actual 0x00000000
+
+    101055 SB: External read register x12, Expected 0x00000000, Matches Actual 0x00000000
+
+    101075 SB: External read register x13, Expected 0x00000000, Matches Actual 0x00000000
+
+    101095 SB: External read register x14, Expected 0x00000000, Matches Actual 0x00000000
+
+    101115 SB: External read register x15, Expected 0x00000000, Matches Actual 0x00000000
+
+    101135 SB: External read register x16, Expected 0x00000000, Matches Actual 0x00000000
+
+    101155 SB: External read register x17, Expected 0x00000000, Matches Actual 0x00000000
+
+    101175 SB: External read register x18, Expected 0x00000000, Matches Actual 0x00000000
+
+    101195 SB: External read register x19, Expected 0x00000000, Matches Actual 0x00000000
+
+    101215 SB: External read register x20, Expected 0x00000000, Matches Actual 0x00000000
+
+    101235 SB: External read register x21, Expected 0x00000000, Matches Actual 0x00000000
+
+    101255 SB: External read register x22, Expected 0x00000000, Matches Actual 0x00000000
+
+    101275 SB: External read register x23, Expected 0x00000000, Matches Actual 0x00000000
+
+    101295 SB: External read register x24, Expected 0x00000000, Matches Actual 0x00000000
+
+    101315 SB: External read register x25, Expected 0x00000000, Matches Actual 0x00000000
+
+    101335 SB: External read register x26, Expected 0x00000000, Matches Actual 0x00000000
+
+    101355 SB: External read register x27, Expected 0x00000000, Matches Actual 0x00000000
+
+    101375 SB: External read register x28, Expected 0x00000000, Matches Actual 0x00000000
+
+    101395 SB: External read register x29, Expected 0x00000000, Matches Actual 0x00000000
+
+    101415 SB: External read register x30, Expected 0x00000000, Matches Actual 0x00000000
+
+    101435 SB: External read register x31, Expected 0x00000000, Matches Actual 0x00000000
+
+    101485 SB: External read dmem[0x000], Expected 0x3c00d3c7, Matches Actual 0x3c00d3c7
+
+    101515 SB: External read dmem[0x001], Expected 0x8d9a2664, Matches Actual 0x8d9a2664
+
+    101545 SB: External read dmem[0x002], Expected 0xb2a321db, Matches Actual 0xb2a321db
+
+    101575 SB: External read dmem[0x003], Expected 0x2983433d, Matches Actual 0x2983433d
+
+    101605 SB: External read dmem[0x004], Expected 0xf3d79464, Matches Actual 0xf3d79464
+
+    101635 SB: External read dmem[0x005], Expected 0x3c2fef84, Matches Actual 0x3c2fef84
+
+    101665 SB: External read dmem[0x006], Expected 0x6d881970, Matches Actual 0x6d881970
+
+    101695 SB: External read dmem[0x007], Expected 0x3889feae, Matches Actual 0x3889feae
+
+    101725 SB: External read dmem[0x008], Expected 0xc27f1f3b, Matches Actual 0xc27f1f3b
+
+    101755 SB: External read dmem[0x009], Expected 0xfa19f51d, Matches Actual 0xfa19f51d
+
+    101785 SB: External read dmem[0x00a], Expected 0xcde2e1ac, Matches Actual 0xcde2e1ac
+
+    101815 SB: External read dmem[0x00b], Expected 0xc081ed9e, Matches Actual 0xc081ed9e
+
+    101845 SB: External read dmem[0x00c], Expected 0x16b167d6, Matches Actual 0x16b167d6
+
+    101875 SB: External read dmem[0x00d], Expected 0x9b002eeb, Matches Actual 0x9b002eeb
+
+    101905 SB: External read dmem[0x00e], Expected 0xb3483179, Matches Actual 0xb3483179
+
+    101935 SB: External read dmem[0x00f], Expected 0x43f07129, Matches Actual 0x43f07129
+
+    101965 Mon: External write Addr: 0x1000, Data: 0xdeadbeef
+
+    101965 SB: External write dmem[0x000] <- 0xdeadbeef
+
+
+=================================================================
+ TEST: x0_hardwired
+=================================================================
+    101985 Mon: Reset asserted
+
+    102055 Mon: External write Addr: 0x0000, Data: 0x00900093
+
+    102055 SB: External write imem[0x000] <- 0x00900093
+
+    102075 Mon: External write Addr: 0x0004, Data: 0x00500013
+
+    102075 SB: External write imem[0x001] <- 0x00500013
+
+    102095 Mon: External write Addr: 0x0008, Data: 0x00100133
+
+    102095 SB: External write imem[0x002] <- 0x00100133
+
+    102115 Mon: External write Addr: 0x000c, Data: 0x00108033
+
+    102115 SB: External write imem[0x003] <- 0x00108033
+
+    102135 Mon: External write Addr: 0x0010, Data: 0x40008033
+
+    102135 SB: External write imem[0x004] <- 0x40008033
+
+    102155 Mon: External write Addr: 0x0014, Data: 0x00109033
+
+    102155 SB: External write imem[0x005] <- 0x00109033
+
+    102175 Mon: External write Addr: 0x0018, Data: 0x0010d033
+
+    102175 SB: External write imem[0x006] <- 0x0010d033
+
+    102195 Mon: External write Addr: 0x001c, Data: 0x00002003
+
+    102195 SB: External write imem[0x007] <- 0x00002003
+
+    102215 Mon: External write Addr: 0x0020, Data: 0x00000193
+
+    102215 SB: External write imem[0x008] <- 0x00000193
+
+    102235 Mon: External write Addr: 0x0024, Data: 0x00000233
+
+    102235 SB: External write imem[0x009] <- 0x00000233
+
+    102255 Mon: External write Addr: 0x0028, Data: 0x00100073
+
+    102255 SB: External write imem[0x00a] <- 0x00100073
+
+    102295 Mon: CPU started executing
+
+    102645 Mon: cpu_halted_o asserted
+
+    102675 SB: External read register x0, Expected 0x00000000, Matches Actual 0x00000000
+
+    102695 SB: External read register x1, Expected 0x00000009, Matches Actual 0x00000009
+
+    102715 SB: External read register x2, Expected 0x00000009, Matches Actual 0x00000009
+
+    102735 SB: External read register x3, Expected 0x00000000, Matches Actual 0x00000000
+
+    102755 SB: External read register x4, Expected 0x00000000, Matches Actual 0x00000000
+
+    102775 SB: External read register x5, Expected 0x00000000, Matches Actual 0x00000000
+
+    102795 SB: External read register x6, Expected 0x00000000, Matches Actual 0x00000000
+
+    102815 SB: External read register x7, Expected 0x00000000, Matches Actual 0x00000000
+
+    102835 SB: External read register x8, Expected 0x00000000, Matches Actual 0x00000000
+
+    102855 SB: External read register x9, Expected 0x00000000, Matches Actual 0x00000000
+
+    102875 SB: External read register x10, Expected 0x00000000, Matches Actual 0x00000000
+
+    102895 SB: External read register x11, Expected 0x00000000, Matches Actual 0x00000000
+
+    102915 SB: External read register x12, Expected 0x00000000, Matches Actual 0x00000000
+
+    102935 SB: External read register x13, Expected 0x00000000, Matches Actual 0x00000000
+
+    102955 SB: External read register x14, Expected 0x00000000, Matches Actual 0x00000000
+
+    102975 SB: External read register x15, Expected 0x00000000, Matches Actual 0x00000000
+
+    102995 SB: External read register x16, Expected 0x00000000, Matches Actual 0x00000000
+
+    103015 SB: External read register x17, Expected 0x00000000, Matches Actual 0x00000000
+
+    103035 SB: External read register x18, Expected 0x00000000, Matches Actual 0x00000000
+
+    103055 SB: External read register x19, Expected 0x00000000, Matches Actual 0x00000000
+
+    103075 SB: External read register x20, Expected 0x00000000, Matches Actual 0x00000000
+
+    103095 SB: External read register x21, Expected 0x00000000, Matches Actual 0x00000000
+
+    103115 SB: External read register x22, Expected 0x00000000, Matches Actual 0x00000000
+
+    103135 SB: External read register x23, Expected 0x00000000, Matches Actual 0x00000000
+
+    103155 SB: External read register x24, Expected 0x00000000, Matches Actual 0x00000000
+
+    103175 SB: External read register x25, Expected 0x00000000, Matches Actual 0x00000000
+
+    103195 SB: External read register x26, Expected 0x00000000, Matches Actual 0x00000000
+
+    103215 SB: External read register x27, Expected 0x00000000, Matches Actual 0x00000000
+
+    103235 SB: External read register x28, Expected 0x00000000, Matches Actual 0x00000000
+
+    103255 SB: External read register x29, Expected 0x00000000, Matches Actual 0x00000000
+
+    103275 SB: External read register x30, Expected 0x00000000, Matches Actual 0x00000000
+
+    103295 SB: External read register x31, Expected 0x00000000, Matches Actual 0x00000000
+
+    103345 SB: External read dmem[0x000], Expected 0xdeadbeef, Matches Actual 0xdeadbeef
+
+    103375 SB: External read dmem[0x001], Expected 0x8d9a2664, Matches Actual 0x8d9a2664
+
+    103405 SB: External read dmem[0x002], Expected 0xb2a321db, Matches Actual 0xb2a321db
+
+    103435 SB: External read dmem[0x003], Expected 0x2983433d, Matches Actual 0x2983433d
+
+    103465 SB: External read dmem[0x004], Expected 0xf3d79464, Matches Actual 0xf3d79464
+
+    103495 SB: External read dmem[0x005], Expected 0x3c2fef84, Matches Actual 0x3c2fef84
+
+    103525 SB: External read dmem[0x006], Expected 0x6d881970, Matches Actual 0x6d881970
+
+    103555 SB: External read dmem[0x007], Expected 0x3889feae, Matches Actual 0x3889feae
+
+    103585 SB: External read dmem[0x008], Expected 0xc27f1f3b, Matches Actual 0xc27f1f3b
+
+    103615 SB: External read dmem[0x009], Expected 0xfa19f51d, Matches Actual 0xfa19f51d
+
+    103645 SB: External read dmem[0x00a], Expected 0xcde2e1ac, Matches Actual 0xcde2e1ac
+
+    103675 SB: External read dmem[0x00b], Expected 0xc081ed9e, Matches Actual 0xc081ed9e
+
+    103705 SB: External read dmem[0x00c], Expected 0x16b167d6, Matches Actual 0x16b167d6
+
+    103735 SB: External read dmem[0x00d], Expected 0x9b002eeb, Matches Actual 0x9b002eeb
+
+    103765 SB: External read dmem[0x00e], Expected 0xb3483179, Matches Actual 0xb3483179
+
+    103795 SB: External read dmem[0x00f], Expected 0x43f07129, Matches Actual 0x43f07129
+
+    103825 Mon: External write Addr: 0x1000, Data: 0x11111111
+
+    103825 SB: External write dmem[0x000] <- 0x11111111
+
+    103845 Mon: External write Addr: 0x1004, Data: 0x22222222
+
+    103845 SB: External write dmem[0x001] <- 0x22222222
+
+    103865 Mon: External write Addr: 0x1008, Data: 0xdeadbeef
+
+    103865 SB: External write dmem[0x002] <- 0xdeadbeef
+
+    103885 Mon: External write Addr: 0x100c, Data: 0x80000000
+
+    103885 SB: External write dmem[0x003] <- 0x80000000
+
+    103905 Mon: External write Addr: 0x1010, Data: 0xffffffff
+
+    103905 SB: External write dmem[0x004] <- 0xffffffff
+
+    103925 Mon: External write Addr: 0x1014, Data: 0x00000000
+
+    103925 SB: External write dmem[0x005] <- 0x00000000
+
+    103945 Mon: External write Addr: 0x1018, Data: 0x12345678
+
+    103945 SB: External write dmem[0x006] <- 0x12345678
+
+    103965 Mon: External write Addr: 0x101c, Data: 0xcafef00d
+
+    103965 SB: External write dmem[0x007] <- 0xcafef00d
+
+
+=================================================================
+ TEST: lw_offsets
+=================================================================
+    103985 Mon: Reset asserted
+
+    104055 Mon: External write Addr: 0x0000, Data: 0x00002083
+
+    104055 SB: External write imem[0x000] <- 0x00002083
+
+    104075 Mon: External write Addr: 0x0004, Data: 0x00802103
+
+    104075 SB: External write imem[0x001] <- 0x00802103
+
+    104095 Mon: External write Addr: 0x0008, Data: 0x01000193
+
+    104095 SB: External write imem[0x002] <- 0x01000193
+
+    104115 Mon: External write Addr: 0x000c, Data: 0x0001a203
+
+    104115 SB: External write imem[0x003] <- 0x0001a203
+
+    104135 Mon: External write Addr: 0x0010, Data: 0xffc1a283
+
+    104135 SB: External write imem[0x004] <- 0xffc1a283
+
+    104155 Mon: External write Addr: 0x0014, Data: 0x0081a303
+
+    104155 SB: External write imem[0x005] <- 0x0081a303
+
+    104175 Mon: External write Addr: 0x0018, Data: 0x01c02383
+
+    104175 SB: External write imem[0x006] <- 0x01c02383
+
+    104195 Mon: External write Addr: 0x001c, Data: 0x01402403
+
+    104195 SB: External write imem[0x007] <- 0x01402403
+
+    104215 Mon: External write Addr: 0x0020, Data: 0x00100073
+
+    104215 SB: External write imem[0x008] <- 0x00100073
+
+    104255 Mon: CPU started executing
+
+    104665 Mon: cpu_halted_o asserted
+
+    104695 SB: External read register x0, Expected 0x00000000, Matches Actual 0x00000000
+
+    104715 SB: External read register x1, Expected 0x11111111, Matches Actual 0x11111111
+
+    104735 SB: External read register x2, Expected 0xdeadbeef, Matches Actual 0xdeadbeef
+
+    104755 SB: External read register x3, Expected 0x00000010, Matches Actual 0x00000010
+
+    104775 SB: External read register x4, Expected 0xffffffff, Matches Actual 0xffffffff
+
+    104795 SB: External read register x5, Expected 0x80000000, Matches Actual 0x80000000
+
+    104815 SB: External read register x6, Expected 0x12345678, Matches Actual 0x12345678
+
+    104835 SB: External read register x7, Expected 0xcafef00d, Matches Actual 0xcafef00d
+
+    104855 SB: External read register x8, Expected 0x00000000, Matches Actual 0x00000000
+
+    104875 SB: External read register x9, Expected 0x00000000, Matches Actual 0x00000000
+
+    104895 SB: External read register x10, Expected 0x00000000, Matches Actual 0x00000000
+
+    104915 SB: External read register x11, Expected 0x00000000, Matches Actual 0x00000000
+
+    104935 SB: External read register x12, Expected 0x00000000, Matches Actual 0x00000000
+
+    104955 SB: External read register x13, Expected 0x00000000, Matches Actual 0x00000000
+
+    104975 SB: External read register x14, Expected 0x00000000, Matches Actual 0x00000000
+
+    104995 SB: External read register x15, Expected 0x00000000, Matches Actual 0x00000000
+
+    105015 SB: External read register x16, Expected 0x00000000, Matches Actual 0x00000000
+
+    105035 SB: External read register x17, Expected 0x00000000, Matches Actual 0x00000000
+
+    105055 SB: External read register x18, Expected 0x00000000, Matches Actual 0x00000000
+
+    105075 SB: External read register x19, Expected 0x00000000, Matches Actual 0x00000000
+
+    105095 SB: External read register x20, Expected 0x00000000, Matches Actual 0x00000000
+
+    105115 SB: External read register x21, Expected 0x00000000, Matches Actual 0x00000000
+
+    105135 SB: External read register x22, Expected 0x00000000, Matches Actual 0x00000000
+
+    105155 SB: External read register x23, Expected 0x00000000, Matches Actual 0x00000000
+
+    105175 SB: External read register x24, Expected 0x00000000, Matches Actual 0x00000000
+
+    105195 SB: External read register x25, Expected 0x00000000, Matches Actual 0x00000000
+
+    105215 SB: External read register x26, Expected 0x00000000, Matches Actual 0x00000000
+
+    105235 SB: External read register x27, Expected 0x00000000, Matches Actual 0x00000000
+
+    105255 SB: External read register x28, Expected 0x00000000, Matches Actual 0x00000000
+
+    105275 SB: External read register x29, Expected 0x00000000, Matches Actual 0x00000000
+
+    105295 SB: External read register x30, Expected 0x00000000, Matches Actual 0x00000000
+
+    105315 SB: External read register x31, Expected 0x00000000, Matches Actual 0x00000000
+
+    105365 SB: External read dmem[0x000], Expected 0x11111111, Matches Actual 0x11111111
+
+    105395 SB: External read dmem[0x001], Expected 0x22222222, Matches Actual 0x22222222
+
+    105425 SB: External read dmem[0x002], Expected 0xdeadbeef, Matches Actual 0xdeadbeef
+
+    105455 SB: External read dmem[0x003], Expected 0x80000000, Matches Actual 0x80000000
+
+    105485 SB: External read dmem[0x004], Expected 0xffffffff, Matches Actual 0xffffffff
+
+    105515 SB: External read dmem[0x005], Expected 0x00000000, Matches Actual 0x00000000
+
+    105545 SB: External read dmem[0x006], Expected 0x12345678, Matches Actual 0x12345678
+
+    105575 SB: External read dmem[0x007], Expected 0xcafef00d, Matches Actual 0xcafef00d
+
+    105605 SB: External read dmem[0x008], Expected 0xc27f1f3b, Matches Actual 0xc27f1f3b
+
+    105635 SB: External read dmem[0x009], Expected 0xfa19f51d, Matches Actual 0xfa19f51d
+
+    105665 SB: External read dmem[0x00a], Expected 0xcde2e1ac, Matches Actual 0xcde2e1ac
+
+    105695 SB: External read dmem[0x00b], Expected 0xc081ed9e, Matches Actual 0xc081ed9e
+
+    105725 SB: External read dmem[0x00c], Expected 0x16b167d6, Matches Actual 0x16b167d6
+
+    105755 SB: External read dmem[0x00d], Expected 0x9b002eeb, Matches Actual 0x9b002eeb
+
+    105785 SB: External read dmem[0x00e], Expected 0xb3483179, Matches Actual 0xb3483179
+
+    105815 SB: External read dmem[0x00f], Expected 0x43f07129, Matches Actual 0x43f07129
+
+    105845 Mon: External write Addr: 0x1000, Data: 0xa5a5a5a5
+
+    105845 SB: External write dmem[0x000] <- 0xa5a5a5a5
+
+    105865 Mon: External write Addr: 0x1004, Data: 0xa5a5a5a5
+
+    105865 SB: External write dmem[0x001] <- 0xa5a5a5a5
+
+    105885 Mon: External write Addr: 0x1008, Data: 0xa5a5a5a5
+
+    105885 SB: External write dmem[0x002] <- 0xa5a5a5a5
+
+    105905 Mon: External write Addr: 0x100c, Data: 0xa5a5a5a5
+
+    105905 SB: External write dmem[0x003] <- 0xa5a5a5a5
+
+    105925 Mon: External write Addr: 0x1010, Data: 0xa5a5a5a5
+
+    105925 SB: External write dmem[0x004] <- 0xa5a5a5a5
+
+    105945 Mon: External write Addr: 0x1014, Data: 0xa5a5a5a5
+
+    105945 SB: External write dmem[0x005] <- 0xa5a5a5a5
+
+    105965 Mon: External write Addr: 0x1018, Data: 0xa5a5a5a5
+
+    105965 SB: External write dmem[0x006] <- 0xa5a5a5a5
+
+    105985 Mon: External write Addr: 0x101c, Data: 0xa5a5a5a5
+
+    105985 SB: External write dmem[0x007] <- 0xa5a5a5a5
+
+    106005 Mon: External write Addr: 0x1020, Data: 0xa5a5a5a5
+
+    106005 SB: External write dmem[0x008] <- 0xa5a5a5a5
+
+    106025 Mon: External write Addr: 0x1024, Data: 0xa5a5a5a5
+
+    106025 SB: External write dmem[0x009] <- 0xa5a5a5a5
+
+    106045 Mon: External write Addr: 0x1028, Data: 0xa5a5a5a5
+
+    106045 SB: External write dmem[0x00a] <- 0xa5a5a5a5
+
+
+=================================================================
+ TEST: sw_offsets
+=================================================================
+    106065 Mon: Reset asserted
+
+    106135 Mon: External write Addr: 0x0000, Data: 0x12300093
+
+    106135 SB: External write imem[0x000] <- 0x12300093
+
+    106155 Mon: External write Addr: 0x0004, Data: 0xfff00113
+
+    106155 SB: External write imem[0x001] <- 0xfff00113
+
+    106175 Mon: External write Addr: 0x0008, Data: 0x02800193
+
+    106175 SB: External write imem[0x002] <- 0x02800193
+
+    106195 Mon: External write Addr: 0x000c, Data: 0x00102023
+
+    106195 SB: External write imem[0x003] <- 0x00102023
+
+    106215 Mon: External write Addr: 0x0010, Data: 0x00202223
+
+    106215 SB: External write imem[0x004] <- 0x00202223
+
+    106235 Mon: External write Addr: 0x0014, Data: 0x02202423
+
+    106235 SB: External write imem[0x005] <- 0x02202423
+
+    106255 Mon: External write Addr: 0x0018, Data: 0xfe11ae23
+
+    106255 SB: External write imem[0x006] <- 0xfe11ae23
+
+    106275 Mon: External write Addr: 0x001c, Data: 0x00002423
+
+    106275 SB: External write imem[0x007] <- 0x00002423
+
+    106295 Mon: External write Addr: 0x0020, Data: 0x00100073
+
+    106295 SB: External write imem[0x008] <- 0x00100073
+
+    106335 Mon: CPU started executing
+
+xmsim: *E,ASRTST (./sym_links/cpu_tb_top.sv,779): (time 106445 NS) Assertion cpu_tb_top.CPU_STORE_NO_X has failed 
+xmsim: *E,ERRSEV (./sym_links/cpu_tb_top.sv,52): (time 106445 NS).
+cpu_tb_top.assertion_fail
+    106445 ASSERT: CPU store with unknown addr/data: addr=0 data=x
+
+xmsim: *E,ERRSEV (./sym_links/cpu_sb.svh,58): (time 106455 NS).
+cpu_tb_pkg::cpu_sb.fail
+    106455 SB: [sw_offsets] store #1 mismatch: dmem[0x000] <= 0xxxxxxxxx, expected dmem[0x000] <= 0x00000123
+
+Simulation complete via $finish(1) at time 106455 NS + 19
+./sym_links/cpu_sb.svh:60             $finish;
+xcelium> exit
+
+coverage setup:
+  workdir  :  ./cov_work
+  dutinst  :  cpu_tb_top(cpu_tb_top)
+  scope    :  scope
+  testname :  member
+
+coverage files:
+  model(design data) :  ./cov_work/scope/icc_71852290_01ecf4e1.ucm
+  data               :  ./cov_work/scope/member/icc_71852290_01ecf4e1.ucd
+TOOL:	xrun(64)	25.03-s003: Exiting on Oct 01, 2026 at 23:56:58 EDT  (total: 00:00:02)

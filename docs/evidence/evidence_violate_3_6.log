@@ -1,0 +1,87 @@
+xrun(64): 25.03-s003: (c) Copyright 1995-2025 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	25.03-s003: Started on Oct 01, 2026 at 20:03:50 EDT
+xrun
+	-64bit
+	-sv
+	-linedebug
+	-access +rwc
+	-timescale 1ns/10ps
+	+define+SIM=1
+	+incdir+sym_links
+	-coverage all
+	-licqueue
+	-covoverwrite
+	-svseed 1
+	-f sym_links/sim_no_path.include
+		sym_links/CF_SRAM_1024x32.tt_180V_25C.v
+		sym_links/sram_wrapper.sv
+		sym_links/memory_controller.sv
+		sym_links/chip_top.sv
+		sym_links/cpu_pkg.sv
+		sym_links/alu.sv
+		sym_links/decode.sv
+		sym_links/reg_file.sv
+		sym_links/fetch.sv
+		sym_links/cpu_top.sv
+		sym_links/cpu_if.sv
+		sym_links/cpu_tb_pkg.sv
+		sym_links/cpu_tb_top.sv
+	-top cpu_tb_top
+	-covtest member
+	-logfile simulation.log
+	+SEED_LABEL=1
+	+VIOLATE_3_6
+
+   User defined plus("+") options:
+	+SEED_LABEL=1
+	+VIOLATE_3_6
+
+xrun: *W,BADPRF: The -linedebug option may have an adverse performance impact.
+Loading snapshot worklib.cpu_tb_top:sv .................... Done
+SVSEED set from command line: 1
+xcelium> source /tools/software/cadence/xcelium/latest/tools/xcelium/files/xmsimrc
+xcelium> run
+xmsim: *W,SHMPOPT: Some objects excluded from $shm_probe due to optimizations.
+            File: ./sym_links/cpu_tb_top.sv, line = 668, pos = 17
+           Scope: cpu_tb_top
+            Time: 0 FS + 0
+
+         5 Mon: Reset asserted
+
+xmsim: *E,ASRTST (./sym_links/cpu_tb_top.sv,716): (time 15 NS) Assertion cpu_tb_top.RESET_INPUTS_IDLE has failed 
+xmsim: *E,ERRSEV (./sym_links/cpu_tb_top.sv,52): (time 15 NS).
+cpu_tb_top.assertion_fail
+        15 ASSERT: control input asserted while reset was high
+
+xmsim: *E,ERRSEV (./sym_links/cpu_tb_top.sv,52): (time 25 NS).
+cpu_tb_top.assertion_fail
+        25 ASSERT: control input asserted while reset was high
+
+xmsim: *E,ERRSEV (./sym_links/cpu_tb_top.sv,52): (time 35 NS).
+cpu_tb_top.assertion_fail
+        35 ASSERT: control input asserted while reset was high
+
+xmsim: *E,ERRSEV (./sym_links/cpu_tb_top.sv,52): (time 45 NS).
+cpu_tb_top.assertion_fail
+        45 ASSERT: control input asserted while reset was high
+
+        65 TB: Initializing instruction and data memories
+
+xmsim: *E,ERRSEV (./sym_links/cpu_sb.svh,58): (time 65 NS).
+cpu_tb_pkg::cpu_sb.fail
+        65 SB: [startup] read of imem[0x000] returned 0xxxxxxxxx, expected 0x00100073
+
+Simulation complete via $finish(1) at time 65 NS + 4
+./sym_links/cpu_sb.svh:60             $finish;
+xcelium> exit
+
+coverage setup:
+  workdir  :  ./cov_work
+  dutinst  :  cpu_tb_top(cpu_tb_top)
+  scope    :  scope
+  testname :  member
+
+coverage files:
+  model(design data) :  ./cov_work/scope/icc_089ea0f9_01ecf4e1.ucm (reused)
+  data               :  ./cov_work/scope/member/icc_089ea0f9_01ecf4e1.ucd
+TOOL:	xrun(64)	25.03-s003: Exiting on Oct 01, 2026 at 20:03:51 EDT  (total: 00:00:01)
